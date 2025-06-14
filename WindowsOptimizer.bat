@@ -2,11 +2,11 @@
 cd /d "%~dp0"
 
 echo :::::::::::::::::::::::::::::::::::::::
-echo ::  Windows Optimizer Script         ::
+echo ::  Install Optimizer Script         ::
 echo ::                                   ::
 echo ::  Version 1.0.0                    ::
 echo ::                                   ::
-echo ::  Jun 12, 2025 by  S.H.E.I.K.H     ::
+echo ::  Jun 14, 2025 by  S.H.E.I.K.H     ::
 echo :::::::::::::::::::::::::::::::::::::::
 echo .
 echo For Post-install use only!
@@ -364,6 +364,260 @@ echo ::::: Setting Services :::::
 echo :::::::::::::::::::::::::::::
 echo .
 
+sc config "ALG" start=Demand
+sc config "AppIDSvc" start=Demand
+sc config "AppMgmt" start=Demand
+sc config "AppReadiness" start=Demand
+sc config "AppXSvc" start=Demand
+sc config "Appinfo" start=Demand
+sc config "AxInstSV" start=Demand
+sc config "BDESVC" start=Demand
+sc config "BTAGService" start=Demand
+sc config "BcastDVRUserService_*" start=Demand
+sc config "BluetoothUserService_*" start=Demand
+sc config "Browser" start=Demand
+sc config "CDPSvc" start=Demand
+sc config "COMSysApp" start=Demand
+sc config "CaptureService_*" start=Demand
+sc config "CertPropSvc" start=Demand
+sc config "ClipSVC" start=Demand
+sc config "ConsentUxUserSvc_*" start=Demand
+sc config "CredentialEnrollmentManagerUserSvc_*" start=Demand
+sc config "CscService" start=Demand
+sc config "DcpSvc" start=Demand
+sc config "DevQueryBroker" start=Demand
+sc config "DeviceAssociationBrokerSvc_*" start=Demand
+sc config "DeviceAssociationService" start=Demand
+sc config "DeviceInstall" start=Demand
+sc config "DevicePickerUserSvc_*" start=Demand
+sc config "DevicesFlowUserSvc_*" start=Demand
+sc config "DisplayEnhancementService" start=Demand
+sc config "DmEnrollmentSvc" start=Demand
+sc config "EFS" start=Demand
+sc config "EapHost" start=Demand
+sc config "EntAppSvc" start=Demand
+sc config "FDResPub" start=Demand
+sc config "Fax" start=Demand
+sc config "FrameServer" start=Demand
+sc config "FrameServerMonitor" start=Demand
+sc config "GraphicsPerfSvc" start=Demand
+sc config "HomeGroupListener" start=Demand
+sc config "HomeGroupProvider" start=Demand
+sc config "HvHost" start=Demand
+sc config "IEEtwCollectorService" start=Demand
+sc config "IKEEXT" start=Demand
+sc config "InstallService" start=Demand
+sc config "InventorySvc" start=Demand
+sc config "IpxlatCfgSvc" start=Demand
+sc config "KtmRm" start=Demand
+sc config "LicenseManager" start=Demand
+sc config "LxpSvc" start=Demand
+sc config "MSDTC" start=Demand
+sc config "MSiSCSI" start=Demand
+sc config "McpManagementService" start=Demand
+sc config "MessagingService_*" start=Demand
+sc config "MicrosoftEdgeElevationService" start=Demand
+sc config "MixedRealityOpenXRSvc" start=Demand
+sc config "MsKeyboardFilter" start=Demand
+sc config "NPSMSvc_*" start=Demand
+sc config "NaturalAuthentication" start=Demand
+sc config "NcaSvc" start=Demand
+sc config "NcbService" start=Demand
+sc config "NcdAutoSetup" start=Demand
+sc config "NetSetupSvc" start=Demand
+sc config "Netman" start=Demand
+sc config "NgcCtnrSvc" start=Demand
+sc config "NgcSvc" start=Demand
+sc config "NlaSvc" start=Demand
+sc config "P9RdrService_*" start=Demand
+sc config "PNRPAutoREG" start=Demand
+sc config "PNRPsvc" start=Demand
+sc config "PcaSvc" start=Demand
+sc config "PeerDistSvc" start=Demand
+sc config "PenService_*" start=Demand
+sc config "PerfHost" start=Demand
+sc config "PhoneSvc" start=Demand
+sc config "PimIndexMaintenanceSvc_*" start=Demand
+sc config "PlugPlay" start=Demand
+sc config "PolicyAgent" start=Demand
+sc config "PrintNotify" start=Demand
+sc config "PrintWorkflowUserSvc_*" start=Demand
+sc config "PushToInstall" start=Demand
+sc config "QWAVE" start=Demand
+sc config "RasAuto" start=Demand
+sc config "RasMan" start=Demand
+sc config "RetailDemo" start=Demand
+sc config "RmSvc" start=Demand
+sc config "RpcLocator" start=Demand
+sc config "SCPolicySvc" start=Demand
+sc config "SCardSvr" start=Demand
+sc config "SDRSVC" start=Demand
+sc config "SEMgrSvc" start=Demand
+sc config "SNMPTRAP" start=Demand
+sc config "SNMPTrap" start=Demand
+sc config "SSDPSRV" start=Demand
+sc config "ScDeviceEnum" start=Demand
+sc config "SecurityHealthService" start=Demand
+sc config "Sense" start=Demand
+sc config "SensorDataService" start=Demand
+sc config "SensorService" start=Demand
+sc config "SensrSvc" start=Demand
+sc config "SessionEnv" start=Demand
+sc config "SharedAccess" start=Demand
+sc config "SharedRealitySvc" start=Demand
+sc config "SmsRouter" start=Demand
+sc config "SstpSvc" start=Demand
+sc config "StiSvc" start=Demand
+sc config "StorSvc" start=Demand
+sc config "TabletInputService" start=Demand
+sc config "TapiSrv" start=Demand
+sc config "TieringEngineService" start=Demand
+sc config "TimeBroker" start=Demand
+sc config "TimeBrokerSvc" start=Demand
+sc config "TokenBroker" start=Demand
+sc config "TroubleshootingSvc" start=Demand
+sc config "TrustedInstaller" start=Demand
+sc config "UI0Detect" start=Demand
+sc config "UdkUserSvc_*" start=Demand
+sc config "UmRdpService" start=Demand
+sc config "UnistoreSvc_*" start=Demand
+sc config "UserDataSvc_*" start=Demand
+sc config "UsoSvc" start=Demand
+sc config "VSS" start=Demand
+sc config "VacSvc" start=Demand
+sc config "W32Time" start=Demand
+sc config "WEPHOSTSVC" start=Demand
+sc config "WFDSConMgrSvc" start=Demand
+sc config "WMPNetworkSvc" start=Demand
+sc config "WManSvc" start=Demand
+sc config "WPDBusEnum" start=Demand
+sc config "WSService" start=Demand
+sc config "WaaSMedicSvc" start=Demand
+sc config "WalletService" start=Demand
+sc config "WarpJITSvc" start=Demand
+sc config "WcsPlugInService" start=Demand
+sc config "WdNisSvc" start=Demand
+sc config "WdiServiceHost" start=Demand
+sc config "WdiSystemHost" start=Demand
+sc config "WebClient" start=Demand
+sc config "Wecsvc" start=Demand
+sc config "WerSvc" start=Demand
+sc config "WiaRpc" start=Demand
+sc config "WinHttpAutoProxySvc" start=Demand
+sc config "WinRM" start=Demand
+sc config "WpcMonSvc" start=Demand
+sc config "WpnService" start=Demand
+sc config "XblAuthManager" start=Demand
+sc config "XblGameSave" start=Demand
+sc config "XboxGipSvc" start=Demand
+sc config "XboxNetApiSvc" start=Demand
+sc config "autotimesvc" start=Demand
+sc config "bthserv" start=Demand
+sc config "camsvc" start=Demand
+sc config "cbdhsvc_*" start=Demand
+sc config "cloudidsvc" start=Demand
+sc config "dcsvc" start=Demand
+sc config "defragsvc" start=Demand
+sc config "diagnosticshub.standardcollector.service" start=Demand
+sc config "diagsvc" start=Demand
+sc config "dmwappushservice" start=Demand
+sc config "dot3svc" start=Demand
+sc config "edgeupdate" start=Demand
+sc config "edgeupdatem" start=Demand
+sc config "embeddedmode" start=Demand
+sc config "fdPHost" start=Demand
+sc config "fhsvc" start=Demand
+sc config "hidserv" start=Demand
+sc config "icssvc" start=Demand
+sc config "lfsvc" start=Demand
+sc config "lltdsvc" start=Demand
+sc config "lmhosts" start=Demand
+sc config "msiserver" start=Demand
+sc config "netprofm" start=Demand
+sc config "p2pimsvc" start=Demand
+sc config "p2psvc" start=Demand
+sc config "perceptionsimulation" start=Demand
+sc config "pla" start=Demand
+sc config "seclogon" start=Demand
+sc config "smphost" start=Demand
+sc config "spectrum" start=Demand
+sc config "svsvc" start=Demand
+sc config "swprv" start=Demand
+sc config "upnphost" start=Demand
+sc config "vds" start=Demand
+sc config "vm3dservice" start=Demand
+sc config "vmicguestinterface" start=Demand
+sc config "vmicheartbeat" start=Demand
+sc config "vmickvpexchange" start=Demand
+sc config "vmicrdv" start=Demand
+sc config "vmicshutdown" start=Demand
+sc config "vmictimesync" start=Demand
+sc config "vmicvmsession" start=Demand
+sc config "vmicvss" start=Demand
+sc config "vmvss" start=Demand
+sc config "wbengine" start=Demand
+sc config "wcncsvc" start=Demand
+sc config "webthreatdefsvc" start=Demand
+sc config "wercplsupport" start=Demand
+sc config "wisvc" start=Demand
+sc config "wlidsvc" start=Demand
+sc config "wlpasvc" start=Demand
+sc config "wmiApSrv" start=Demand
+sc config "workfolderssvc" start=Demand
+sc config "wuauserv" start=Demand
+sc config "wudfsvc" start=Demand
+sc config "MapsBroker" start=Demand
+sc config "GameInputSvc" start=Demand
+sc config "TermService" start=Demand
+sc config "EventSystem" start=Demand
+sc config "DusmSvc" start=Demand
+sc config "DoSvc" start=Demand
+sc config "DPS" start=Demand
+sc config "AarSvc" start=Demand
+sc config "AssignedAccessManagerSvc" start=Demand
+sc config "BthAvctpSvc" start=Demand
+sc config "BluetoothUserService" start=Demand
+sc config "CaptureService" start=Demand
+sc config "cbdhsvc" start=Demand
+sc config "CloudBackupRestoreSvc" start=Demand
+sc config "DiagTrack" start=Demand
+sc config "ConsentUxUserSvc" start=Demand
+sc config "PimIndexMaintenanceSvc" start=Demand
+sc config "DsSvc" start=Demand
+sc config "DeviceAssociationBrokerSvc" start=Demand
+sc config "DevicePickerUserSvc" start=Demand
+sc config "TrkWks" start=Demand
+sc config "hpatchmon" start=Demand
+sc config "wlpasvc\wlpasvc" start=Demand
+sc config "MessagingService" start=Demand
+sc config "wlidsvc\wlidsvc" start=Demand
+sc config "Netlogon" start=Demand
+sc config "NPSMSvc" start=Demand
+sc config "PenService" start=Demand
+sc config "PrintDeviceConfigurationService" start=Demand
+sc config "Spooler" start=Demand
+sc config "PrintScanBrokerService" start=Demand
+sc config "PrintWorkflowUserSvc" start=Demand
+sc config "refsdedupsvc" start=Demand
+sc config "wscsvc" start=Demand
+sc config "OneSyncSvc" start=Demand
+sc config "SysMain" start=Demand
+sc config "SENS" start=Demand
+sc config "UserDataSvc" start=Demand
+sc config "UnistoreSvc" start=Demand
+sc config "webthreatdefusersvc" start=Demand
+sc config "WinDefend" start=Demand
+sc config "WbioSrvc" start=Demand
+sc config "mpssvc" start=Demand
+sc config "WSearch" start=Demand
+sc config "WwanSvc" start=Demand
+sc config "ZTHELPER" start=Demand
+sc stop "webthreatdefsvc"
+sc config "webthreatdefsvc" start= disabled
+sc stop "webthreatdefusersvc"
+sc config "webthreatdefusersvc" start= disabled
+sc stop "WerSvc"
+sc config "WerSvc" start= disabled
 sc stop "WinDefend"
 sc config "WinDefend" start=disabled
 sc stop "MDCoreSvc"
@@ -384,10 +638,10 @@ sc stop "DialogBlockingService"
 sc config "DialogBlockingService" start=disabled
 sc stop "NetTcpPortSharing"
 sc config "NetTcpPortSharing" start=disabled
-sc stop "echooteAccess"
-sc config "echooteAccess" start=disabled
-sc stop "echooteRegistry"
-sc config "echooteRegistry" start=disabled
+sc stop "RemoteAccess"
+sc config "RemoteAccess" start=disabled
+sc stop "RemoteREGistry"
+sc config "RemoteREGistry" start=disabled
 sc stop "UevAgentService"
 sc config "UevAgentService" start=disabled
 sc stop "shpamsvc"
@@ -442,7 +696,6 @@ sc stop "WMPNetworkSvc"
 sc config "WMPNetworkSvc" start=disabled
 sc stop "WinRM"
 sc config "WinRM" start=disabled
-
 
 echo .
 echo :::::::::::::::::::::::::::::::::::
@@ -603,7 +856,6 @@ echo .
 dism /online /cleanup-image /checkhealth >nul 2>&1
 dism /online /cleanup-image /scanhealth
 dism /online /cleanup-image /restorehealth
-sfc /verifyonly
 sfc /scannow
 
 
@@ -690,7 +942,7 @@ echo ::::: Disk Optimization :::::
 echo :::::::::::::::::::::::::::::
 echo .
 
-defrag /C /O
+defrag C: /O
 
 
 echo .
