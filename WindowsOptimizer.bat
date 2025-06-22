@@ -1,12 +1,30 @@
 @echo off
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: This Script will repair Windows with SFC and DISM commands and then runs a deep clean command to       ::
+:: delete temporary files.                                                                                ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Check to see if this batch file is being run as Administrator. If it is not, then rerun the batch file ::
+:: automatically as admin and terminate the initial instance of the batch file.                           ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+(Fsutil Dirty Query %SystemDrive%>Nul)||(PowerShell start """%~f0""" -verb RunAs & Exit /B) > NUL 2>&1
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+:: End Routine to check if being run as Admin ::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 cd /d "%~dp0"
+cls
 
 echo :::::::::::::::::::::::::::::::::::::::
 echo ::  Install Optimizer Script         ::
 echo ::                                   ::
-echo ::  Version 1.0.0                    ::
+echo ::  Version 2.0.0 (Stable)           ::
 echo ::                                   ::
-echo ::  Jun 14, 2025 by  S.H.E.I.K.H     ::
+echo ::  Jun 20, 2025 by  S.H.E.I.K.H     ::
 echo :::::::::::::::::::::::::::::::::::::::
 echo .
 echo For Post-install use only!
@@ -37,7 +55,6 @@ echo Disable Security and Maitenance Notification
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance" /v "Enabled" /t REG_DWORD /d "0" /f
 
 echo Disable Real-time protection
-reg delete "HKLM\Software\Policies\Microsoft\Windows Defender" /f
 REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "AllowFastServiceStartup" /t REG_DWORD /d "0" /f
 REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
 REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "DisableAntiVirus" /t REG_DWORD /d "1" /f
@@ -70,7 +87,7 @@ echo Disable systray icon
 reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "SecurityHealth" /f
 reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth" /f
 
-echo echoove context menu
+echo Remoove context menu
 reg delete "HKCR\*\shellex\ContextMenuHandlers\EPP" /f
 reg delete "HKCR\Directory\shellex\ContextMenuHandlers\EPP" /f
 reg delete "HKCR\Drive\shellex\ContextMenuHandlers\EPP" /f
@@ -83,10 +100,12 @@ REG Add "HKLM\System\CurrentControlSet\Services\WdNisDrv" /v "Start" /t REG_DWOR
 REG Add "HKLM\System\CurrentControlSet\Services\WdNisSvc" /v "Start" /t REG_DWORD /d "4" /f
 REG Add "HKLM\System\CurrentControlSet\Services\WinDefend" /v "Start" /t REG_DWORD /d "4" /f
 
-echo OWeb Threat Defense Service (Phishing protection)
+echo Web Threat Defense Service (Phishing protection)
+sc stop "webthreatdefsvc"
 sc config webthreatdefsvc start= disabled
 
 echo Web Threat Defense User Service (Phishing protection)
+sc stop "webthreatdefusersvc"
 sc config webthreatdefusersvc start= disabled
 
 echo Disable Windows SmartScreen
@@ -101,7 +120,7 @@ REG Add "HKCU\Software\Microsoft\Edge\SmartScreenPuaEnabled" /ve /t REG_DWORD /d
 echo Disable Windows SmartScreen for Windows Store Apps
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t "REG_DWORD" /d "0" /f
 
-echo echoove Smartscreen (to restore run "sfc /scannow")
+echo Remove Smartscreen (to restore run "sfc /scannow")
 takeown /s %computername% /u %username% /f "%WinDir%\System32\smartscreen.exe"
 icacls "%WinDir%\System32\smartscreen.exe" /grant:r %username%:F
 taskkill /im smartscreen.exe /f
@@ -146,6 +165,25 @@ REG Add "HKLM\Software\Policies\Microsoft\PushToInstall" /v "DisablePushToInstal
 REG Add "HKLM\Software\Policies\Microsoft\MRT" /v "DontOfferThroughWUAU" /t REG_DWORD /d "1" /f
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /f
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /f
+
+
+echo .
+echo :::::::::::::::::::::::::::::::
+echo ::::: Disabling BitLocker :::::
+echo :::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\SYSTEM\ControlSet001\Control\BitLocker" /v "PreventDeviceEncryption" /t REG_DWORD /d "1" /f
+
+
+echo .
+echo :::::::::::::::::::::::::::::::
+echo ::::: Disabling Chat Icon :::::
+echo :::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows" /v "ChatIcon" /t REG_DWORD /d "3" /f
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarMn" /t REG_DWORD /d "0" /f
 
 
 echo .
@@ -223,6 +261,7 @@ schtasks /Change /TN "Microsoft\Windows\ErrorDetails\EnableErrorDetailsUpdate" /
 schtasks /Change /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
 
 echo Windows Error Reporting Service
+sc stop "WerSvc"
 sc config WerSvc start= disabled
 
 
@@ -247,13 +286,13 @@ REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "ShowCloudF
 echo Disable Network Icon from Navigation Panel / Right in Nav Panel
 REG Add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /v "Attributes" /t REG_DWORD /d "2962489444" /f
 
-echo echoove Gallery from Navigation Pane in File Explorer
+echo Remove Gallery from Navigation Pane in File Explorer
 REG Add "HKCU\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" /v "System.IsPinnedToNameSpaceTree" /t REG_DWORD /d "0" /f
 
-echo echoove 3D Folders from This PC
+echo Remove 3D Folders from This PC
 reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f
 
-echo echoove Home (Quick access) from This PC
+echo Remove Home (Quick access) from This PC
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f
 reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /f
 reg delete "HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /f
@@ -270,6 +309,138 @@ REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatus
 
 
 echo .
+echo :::::::::::::::::::::::::::::::
+echo ::::: Disabling Telemetry :::::
+echo :::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d "0" /f
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f
+REG Add "HKLM\Software\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /v "HasAccepted" /t REG_DWORD /d "0" /f
+REG Add "HKLM\Software\Microsoft\Input\TIPC" /v "Enabled" /t REG_DWORD /d "0" /f
+REG Add "HKLM\Software\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d "1" /f
+REG Add "HKLM\Software\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d "1" /f
+REG Add "HKLM\Software\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts" /t REG_DWORD /d "0" /f
+REG Add "HKLM\Software\Microsoft\Personalization\Settings" /v "AcceptedPrivacyPolicy" /t REG_DWORD /d "0" /f
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
+REG Add "HKLM\SYSTEM\ControlSet001\Services\dmwappushservice" /v "Start" /t REG_DWORD /d "4" /f
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat" /v "ChatIcon" /t REG_DWORD /d "3" /f
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarMn" /t REG_DWORD /d "0" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::::::::::::
+echo ::::: Disabling OneDrive folder backup :::::
+echo ::::::::::::::::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /t REG_DWORD /d "1" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::::::::
+echo ::::: Disabling Bing in Start Menu :::::
+echo ::::::::::::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "ShowRunAsDifferentUserInStart" /t REG_DWORD /d "1" /f
+REG Add "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v "DisableSearchBoxSuggestions" /t REG_DWORD /d "1" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::::::::
+echo ::::: Disabling DevHome and Outlook :::::
+echo ::::::::::::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\UScheduler\OutlookUpdate" /v "workCompleted" /t REG_DWORD /d "1" /f
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\UScheduler\DevHomeUpdate" /v "workCompleted" /t REG_DWORD /d "1" /f
+reg delete "HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate" /f
+reg delete "HKLM\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::::
+echo ::::: Disabling Sponsored apps :::::
+echo ::::::::::::::::::::::::::::::::::::
+echo .
+
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V OemPreInstalledAppsEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V PreInstalledAppsEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SilentInstalledAppsEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V DisableWindowsConsumerFeatures /T REG_DWORD /D 1 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V ContentDeliveryAllowed /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V FeatureManagementEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V OemPreInstalledAppsEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V PreInstalledAppsEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V PreInstalledAppsEverEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SoftLandingEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContentEnabled/T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-310093Enabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-338388Enabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-338389Enabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-338393Enabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-353694Enabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-353696Enabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContentEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SystemPaneSuggestionsEnabled /T REG_DWORD /D 0 /F
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" /V DisablePushToInstall /T REG_DWORD /D 1 /F
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V DontOfferThroughWUAU /T REG_DWORD /D 1 /F
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V DisableConsumerAccountStateContent /T REG_DWORD /D 1 /F
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V DisableCloudOptimizedContent /T REG_DWORD /D 1 /F
+REG delete "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /f
+REG delete "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::::::::::::::::
+echo ::::: Deleting App Compatibility Appraiser :::::
+echo ::::::::::::::::::::::::::::::::::::::::::::::::
+echo .
+
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+echo ::::: Deleting Customer Experiment Improvement Program :::::
+echo ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+echo .
+
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" /f
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" /f
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" /f
+
+
+echo .
+echo :::::::::::::::::::::::::::::::::::::::::
+echo ::::: Deleting Program Data Updater :::::
+echo :::::::::::::::::::::::::::::::::::::::::
+echo .
+
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::
+echo ::::: Deleting autochk proxy :::::
+echo ::::::::::::::::::::::::::::::::::
+echo .
+
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" /f
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" /f
+
+
+echo .
+echo ::::::::::::::::::::::::::::::::::
+echo ::::: Deleting autochk proxy :::::
+echo ::::::::::::::::::::::::::::::::::
+echo .
+
+REG delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" /f
+
+
+echo .
 echo ::::::::::::::::::::::::::::::
 echo ::::: Setting Registries :::::
 echo ::::::::::::::::::::::::::::::
@@ -280,7 +451,6 @@ REG Add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /V NtfsDisableLastAcc
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /V DisableechoovableDriveIndexing /T REG_DWORD /D 1 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /V PreventUsingAdvancedIndexingOptions /T REG_DWORD /D 1 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" /V RPSessionInterval /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" /V Disabled /T REG_DWORD /D 1 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" /V Disabled /T REG_DWORD /D 1 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /V EnableActivityFeed /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /V PublishUserActivities /T REG_DWORD /D 0 /F
@@ -301,22 +471,16 @@ REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V AlternateErrorPagesEnabled /T
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V EdgeCollectionsEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V EdgeShoppingAssistantEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V MicrosoftEdgeInsiderPromotionEnabled /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V PersonalizationReportingEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V ShowMicrosoftRewards /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V WebWidgetAllowed /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V DiagnosticData /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V EdgeAssetDeliveryServiceEnabled /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V EdgeCollectionsEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V CryptoWalletEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /V WalletDonationEnabled /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V DisableWindowsConsumerFeatures /T REG_DWORD /D 1 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /V AllowTelemetry /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V AllowTelemetry /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V ContentDeliveryAllowed /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V OemPreInstalledAppsEnabled /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V PreInstalledAppsEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V PreInstalledAppsEverEnabled /T REG_DWORD /D 0 /F
-REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SilentInstalledAppsEnabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-338387Enabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-338388Enabled /T REG_DWORD /D 0 /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V SubscribedContent-338389Enabled /T REG_DWORD /D 0 /F
@@ -364,6 +528,54 @@ echo ::::: Setting Services :::::
 echo :::::::::::::::::::::::::::::
 echo .
 
+echo Manual Services
+sc stop "CscService"
+sc config "CscService" start=Demand
+sc stop "XblAuthManager"
+sc config "XblAuthManager" start=Demand
+sc stop "XblGameSave"
+sc config "XblGameSave" start=Demand
+sc stop "XboxGipSvc"
+sc config "XboxGipSvc" start=Demand
+sc stop "XboxNetApiSvc"
+sc config "XboxNetApiSvc" start=Demand
+sc stop "RasMan"
+sc config "RasMan" start=Demand
+sc stop "RetailDemo"
+sc config "RetailDemo" start=Demand
+sc stop "SCPolicySvc"
+sc config "SCPolicySvc" start=Demand
+sc stop "SSDPSRV"
+sc config "SSDPSRV" start=Demand
+sc stop "lmhosts"
+sc config "lmhosts" start=Demand
+sc stop "WMPNetworkSvc"
+sc config "WMPNetworkSvc" start=Demand
+sc stop "WinRM"
+sc config "WinRM" start=Demand
+sc stop "AJRouter"
+sc config "AJRouter" start=Demand
+sc stop "AssignedAccessManagerSvc"
+sc config "AssignedAccessManagerSvc" start=Demand
+sc stop "DiagTrack"
+sc config "DiagTrack" start=Demand
+sc stop "tzautoupdate"
+sc config "tzautoupdate" start=Demand
+sc stop "uhssvc"
+sc config "uhssvc" start=Demand
+sc stop "CertPropSvc"
+sc config "CertPropSvc" start=Demand
+sc stop "CDPSvc"
+sc config "CDPSvc" start=Demand
+sc stop "diagsvc"
+sc config "diagsvc" start=Demand
+sc stop "Fax"
+sc config "Fax" start=Demand
+sc stop "fdPHost"
+sc config "fdPHost" start=Demand
+sc stop "wlidsvc"
+sc config "wlidsvc" start=Demand
+sc stop "ALG" start=Demand
 sc config "ALG" start=Demand
 sc config "AppIDSvc" start=Demand
 sc config "AppMgmt" start=Demand
@@ -376,14 +588,11 @@ sc config "BTAGService" start=Demand
 sc config "BcastDVRUserService_*" start=Demand
 sc config "BluetoothUserService_*" start=Demand
 sc config "Browser" start=Demand
-sc config "CDPSvc" start=Demand
 sc config "COMSysApp" start=Demand
 sc config "CaptureService_*" start=Demand
-sc config "CertPropSvc" start=Demand
 sc config "ClipSVC" start=Demand
 sc config "ConsentUxUserSvc_*" start=Demand
 sc config "CredentialEnrollmentManagerUserSvc_*" start=Demand
-sc config "CscService" start=Demand
 sc config "DcpSvc" start=Demand
 sc config "DevQueryBroker" start=Demand
 sc config "DeviceAssociationBrokerSvc_*" start=Demand
@@ -397,7 +606,6 @@ sc config "EFS" start=Demand
 sc config "EapHost" start=Demand
 sc config "EntAppSvc" start=Demand
 sc config "FDResPub" start=Demand
-sc config "Fax" start=Demand
 sc config "FrameServer" start=Demand
 sc config "FrameServerMonitor" start=Demand
 sc config "GraphicsPerfSvc" start=Demand
@@ -418,7 +626,6 @@ sc config "McpManagementService" start=Demand
 sc config "MessagingService_*" start=Demand
 sc config "MicrosoftEdgeElevationService" start=Demand
 sc config "MixedRealityOpenXRSvc" start=Demand
-sc config "MsKeyboardFilter" start=Demand
 sc config "NPSMSvc_*" start=Demand
 sc config "NaturalAuthentication" start=Demand
 sc config "NcaSvc" start=Demand
@@ -445,17 +652,13 @@ sc config "PrintWorkflowUserSvc_*" start=Demand
 sc config "PushToInstall" start=Demand
 sc config "QWAVE" start=Demand
 sc config "RasAuto" start=Demand
-sc config "RasMan" start=Demand
-sc config "RetailDemo" start=Demand
 sc config "RmSvc" start=Demand
 sc config "RpcLocator" start=Demand
-sc config "SCPolicySvc" start=Demand
 sc config "SCardSvr" start=Demand
 sc config "SDRSVC" start=Demand
 sc config "SEMgrSvc" start=Demand
 sc config "SNMPTRAP" start=Demand
 sc config "SNMPTrap" start=Demand
-sc config "SSDPSRV" start=Demand
 sc config "ScDeviceEnum" start=Demand
 sc config "SecurityHealthService" start=Demand
 sc config "Sense" start=Demand
@@ -488,7 +691,6 @@ sc config "VacSvc" start=Demand
 sc config "W32Time" start=Demand
 sc config "WEPHOSTSVC" start=Demand
 sc config "WFDSConMgrSvc" start=Demand
-sc config "WMPNetworkSvc" start=Demand
 sc config "WManSvc" start=Demand
 sc config "WPDBusEnum" start=Demand
 sc config "WSService" start=Demand
@@ -504,13 +706,8 @@ sc config "Wecsvc" start=Demand
 sc config "WerSvc" start=Demand
 sc config "WiaRpc" start=Demand
 sc config "WinHttpAutoProxySvc" start=Demand
-sc config "WinRM" start=Demand
 sc config "WpcMonSvc" start=Demand
 sc config "WpnService" start=Demand
-sc config "XblAuthManager" start=Demand
-sc config "XblGameSave" start=Demand
-sc config "XboxGipSvc" start=Demand
-sc config "XboxNetApiSvc" start=Demand
 sc config "autotimesvc" start=Demand
 sc config "bthserv" start=Demand
 sc config "camsvc" start=Demand
@@ -519,19 +716,16 @@ sc config "cloudidsvc" start=Demand
 sc config "dcsvc" start=Demand
 sc config "defragsvc" start=Demand
 sc config "diagnosticshub.standardcollector.service" start=Demand
-sc config "diagsvc" start=Demand
 sc config "dmwappushservice" start=Demand
 sc config "dot3svc" start=Demand
 sc config "edgeupdate" start=Demand
 sc config "edgeupdatem" start=Demand
 sc config "embeddedmode" start=Demand
-sc config "fdPHost" start=Demand
 sc config "fhsvc" start=Demand
 sc config "hidserv" start=Demand
 sc config "icssvc" start=Demand
 sc config "lfsvc" start=Demand
 sc config "lltdsvc" start=Demand
-sc config "lmhosts" start=Demand
 sc config "msiserver" start=Demand
 sc config "netprofm" start=Demand
 sc config "p2pimsvc" start=Demand
@@ -557,10 +751,8 @@ sc config "vmicvss" start=Demand
 sc config "vmvss" start=Demand
 sc config "wbengine" start=Demand
 sc config "wcncsvc" start=Demand
-sc config "webthreatdefsvc" start=Demand
 sc config "wercplsupport" start=Demand
 sc config "wisvc" start=Demand
-sc config "wlidsvc" start=Demand
 sc config "wlpasvc" start=Demand
 sc config "wmiApSrv" start=Demand
 sc config "workfolderssvc" start=Demand
@@ -574,13 +766,11 @@ sc config "DusmSvc" start=Demand
 sc config "DoSvc" start=Demand
 sc config "DPS" start=Demand
 sc config "AarSvc" start=Demand
-sc config "AssignedAccessManagerSvc" start=Demand
 sc config "BthAvctpSvc" start=Demand
 sc config "BluetoothUserService" start=Demand
 sc config "CaptureService" start=Demand
 sc config "cbdhsvc" start=Demand
 sc config "CloudBackupRestoreSvc" start=Demand
-sc config "DiagTrack" start=Demand
 sc config "ConsentUxUserSvc" start=Demand
 sc config "PimIndexMaintenanceSvc" start=Demand
 sc config "DsSvc" start=Demand
@@ -601,17 +791,16 @@ sc config "PrintWorkflowUserSvc" start=Demand
 sc config "refsdedupsvc" start=Demand
 sc config "wscsvc" start=Demand
 sc config "OneSyncSvc" start=Demand
-sc config "SysMain" start=Demand
 sc config "SENS" start=Demand
 sc config "UserDataSvc" start=Demand
 sc config "UnistoreSvc" start=Demand
-sc config "webthreatdefusersvc" start=Demand
-sc config "WinDefend" start=Demand
 sc config "WbioSrvc" start=Demand
 sc config "mpssvc" start=Demand
-sc config "WSearch" start=Demand
 sc config "WwanSvc" start=Demand
 sc config "ZTHELPER" start=Demand
+echo.
+
+echo Disabled services
 sc stop "webthreatdefsvc"
 sc config "webthreatdefsvc" start= disabled
 sc stop "webthreatdefusersvc"
@@ -626,14 +815,8 @@ sc stop "wsearch"
 sc config "wsearch" start=disabled
 sc stop "SysMain"
 sc config "SysMain" start=disabled
-sc stop "AJRouter"
-sc config "AJRouter" start=disabled
 sc stop "AppVClient"
 sc config "AppVClient" start=disabled
-sc stop "AssignedAccessManagerSvc"
-sc config "AssignedAccessManagerSvc" start=disabled
-sc stop "DiagTrack"
-sc config "DiagTrack" start=disabled
 sc stop "DialogBlockingService"
 sc config "DialogBlockingService" start=disabled
 sc stop "NetTcpPortSharing"
@@ -648,54 +831,9 @@ sc stop "shpamsvc"
 sc config "shpamsvc" start=disabled
 sc stop "ssh-agent"
 sc config "ssh-agent" start=disabled
-sc stop "tzautoupdate"
-sc config "tzautoupdate" start=disabled
-sc stop "uhssvc"
-sc config "uhssvc" start=disabled
-sc stop "CertPropSvc"
-sc config "CertPropSvc" start=disabled
-sc stop "CDPSvc"
-sc config "CDPSvc" start=disabled
-sc stop "diagsvc"
-sc config "diagsvc" start=disabled
-sc stop "Fax"
-sc config "Fax" start=disabled
-sc stop "fdPHost"
-sc config "fdPHost" start=disabled
-sc stop "FDResPub"
-sc config "FDResPub" start=disabled
-sc stop "GraphicsPerfSvc"
-sc config "GraphicsPerfSvc" start=disabled
-sc stop "wlidsvc"
-sc config "wlidsvc" start=disabled
 sc stop "MsKeyboardFilter"
 sc config "MsKeyboardFilter" start=disabled
-sc stop "CscService"
-sc config "CscService" start=disabled
-sc stop "XblAuthManager"
-sc config "XblAuthManager" start=disabled
-sc stop "XblGameSave"
-sc config "XblGameSave" start=disabled
-sc stop "XboxGipSvc"
-sc config "XboxGipSvc" start=disabled
-sc stop "XboxNetApiSvc"
-sc config "XboxNetApiSvc" start=disabled
-sc stop "RasMan"
-sc config "RasMan" start=disabled
-sc stop "RetailDemo"
-sc config "RetailDemo" start=disabled
-sc stop "SCPolicySvc"
-sc config "SCPolicySvc" start=disabled
-sc stop "SSDPSRV"
-sc config "SSDPSRV" start=disabled
-sc stop "lmhosts"
-sc config "lmhosts" start=disabled
-sc stop "WerSvc"
-sc config "WerSvc" start=disabled
-sc stop "WMPNetworkSvc"
-sc config "WMPNetworkSvc" start=disabled
-sc stop "WinRM"
-sc config "WinRM" start=disabled
+
 
 echo .
 echo :::::::::::::::::::::::::::::::::::
@@ -832,8 +970,8 @@ echo ::::: Cleaning DISM Temp :::::
 echo ::::::::::::::::::::::::::::::
 echo .
 
-dism /online /echoove-package /packagename:Package_for_RollupFix~31bf3856ad364e35~amd64~~26100.1742.1.10
 dism /online /cleanup-image /analyzecomponentstore
+dism /online /Remove-package /packagename:Package_for_RollupFix~31bf3856ad364e35~amd64~~26100.1742.1.10
 dism /online /cleanup-image /startcomponentcleanup
 dism /online /cleanup-image /startcomponentcleanup /resetbase
 
@@ -857,7 +995,7 @@ dism /online /cleanup-image /checkhealth >nul 2>&1
 dism /online /cleanup-image /scanhealth
 dism /online /cleanup-image /restorehealth
 sfc /scannow
-
+dism /online /cleanup-image /startcomponentcleanup /resetbase
 
 echo .
 echo ::::::::::::::::::::::::::::::
