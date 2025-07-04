@@ -1,12 +1,13 @@
 @echo off
 cd /d "%~dp0"
+cls
 
 echo :::::::::::::::::::::::::::::::::::::::
 echo ::  Install Optimizer Script (OOBE)  ::
 echo ::                                   ::
-echo ::  Version 2.0.0  (Stable)          ::
+echo ::  Version 3.0.0 (Stable)           ::
 echo ::                                   ::
-echo ::  Jun 20, 2025 by  S.H.E.I.K.H     ::
+echo ::  Jul 04, 2025 by  S.H.E.I.K.H     ::
 echo :::::::::::::::::::::::::::::::::::::::
 echo .
 echo For Pre-install use only!
@@ -744,7 +745,6 @@ sc config "GameInputSvc" start=Demand
 sc config "TermService" start=Demand
 sc config "EventSystem" start=Demand
 sc config "DusmSvc" start=Demand
-sc config "DoSvc" start=Demand
 sc config "DPS" start=Demand
 sc config "AarSvc" start=Demand
 sc config "BthAvctpSvc" start=Demand
@@ -814,6 +814,10 @@ sc stop "ssh-agent"
 sc config "ssh-agent" start=disabled
 sc stop "MsKeyboardFilter"
 sc config "MsKeyboardFilter" start=disabled
+sc stop "DoSvc"
+sc config "DoSvc" start=disabled
+sc stop "PimIndexMaintenanceSvc_3b645"
+sc config "PimIndexMaintenanceSvc_3b645" start=disabled
 
 
 echo .
@@ -822,46 +826,37 @@ echo ::::: Setting Scheduled Tasks :::::
 echo :::::::::::::::::::::::::::::::::::
 echo .
 
-schtasks /Change /Disable /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser"
-schtasks /Change /Disable /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater"
-schtasks /Change /Disable /TN "Microsoft\Windows\Autochk\Proxy"
-schtasks /Change /Disable /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator"
-schtasks /Change /Disable /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip"
-schtasks /Change /Disable /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector"
-schtasks /Change /Disable /TN "Microsoft\Windows\Feedback\Siuf\DmClient"
-schtasks /Change /Disable /TN "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload"
-schtasks /Change /Disable /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting"
-schtasks /Change /Disable /TN "Microsoft\Windows\Application Experience\MareBackup"
-schtasks /Change /Disable /TN "Microsoft\Windows\Application Experience\StartupAppTask"
-schtasks /Change /Disable /TN "Microsoft\Windows\Application Experience\PcaPatchDbTask"
-schtasks /Change /Disable /TN "Microsoft\Windows\Maps\MapsUpdateTask"
-schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTask"
-schtasks /Change /Disable /TN "\Microsoft\Windows\BitLocker\BitLocker Encrypt All Drives"
-schtasks /Change /Disable /TN "\Microsoft\Windows\BitLocker\BitLocker MDM policy Refresh"
+schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable
+schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable
+schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
+schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClient" /Disable
+schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" /Disable
+schtasks /Change /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\MareBackup" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience\PcaPatchDbTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\Maps\MapsUpdateTask" /Disable
+schtasks /Change /TN "Microsoft\XblGameSave\XblGameSaveTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\BitLocker\BitLocker Encrypt All Drives" /Disable
+schtasks /Change /TN "Microsoft\Windows\BitLocker\BitLocker MDM policy Refresh" /Disable
 schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319" /Disable
 schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64" /Disable
 schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64 Critical" /Disable
 schtasks /Change /TN "Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 Critical" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\PcaPatchDbTask" /Disable
 schtasks /Change /TN "Microsoft\Windows\Application Experience\SdbinstMergeDbTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable
 schtasks /Change /TN "Microsoft\Windows\Defrag\ScheduledDefrag" /Disable
 schtasks /Change /TN "Microsoft\Windows\Device Information\Device" /Disable
 schtasks /Change /TN "Microsoft\Windows\Device Information\Device User" /Disable
 schtasks /Change /TN "Microsoft\Windows\Diagnosis\RecommendedTroubleshootingScanner" /Disable
 schtasks /Change /TN "Microsoft\Windows\Diagnosis\Scheduled" /Disable
 schtasks /Change /TN "Microsoft\Windows\DiskCleanup\SilentCleanup" /Disable
-schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
 schtasks /Change /TN "Microsoft\Windows\DiskFootprint\Diagnostics" /Disable
 schtasks /Change /TN "Microsoft\Windows\DiskFootprint\StorageSense" /Disable
 schtasks /Change /TN "Microsoft\Windows\DUSM\dusmtask" /Disable
 schtasks /Change /TN "Microsoft\Windows\EnterpriseMgmt\MDMMaintenenceTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClient" /Disable
-schtasks /Change /TN "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" /Disable
 schtasks /Change /TN "Microsoft\Windows\FileHistory\File History (maintenance mode)" /Disable
 schtasks /Change /TN "Microsoft\Windows\Flighting\FeatureConfig\ReconcileFeatures" /Disable
 schtasks /Change /TN "Microsoft\Windows\Flighting\FeatureConfig\UsageDataFlushing" /Disable
@@ -876,12 +871,10 @@ schtasks /Change /TN "Microsoft\Windows\LanguageComponentsInstaller\Installation
 schtasks /Change /TN "Microsoft\Windows\LanguageComponentsInstaller\ReconcileLanguageResources" /Disable
 schtasks /Change /TN "Microsoft\Windows\LanguageComponentsInstaller\Uninstallation" /Disable
 schtasks /Change /TN "Microsoft\Windows\License Manager\TempSignedLicenseExchange" /Disable
-schtasks /Change /TN "Microsoft\Windows\License Manager\TempSignedLicenseExchange" /Disable
 schtasks /Change /TN "Microsoft\Windows\Management\Provisioning\Cellular" /Disable
 schtasks /Change /TN "Microsoft\Windows\Management\Provisioning\Logon" /Disable
 schtasks /Change /TN "Microsoft\Windows\Maintenance\WinSAT" /Disable
 schtasks /Change /TN "Microsoft\Windows\Maps\MapsToastTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Maps\MapsUpdateTask" /Disable
 schtasks /Change /TN "Microsoft\Windows\MUI\LPechoove" /Disable
 schtasks /Change /TN "Microsoft\Windows\Multimedia\SystemSoundsService" /Disable
 schtasks /Change /TN "Microsoft\Windows\NlaSvc\WiFiTask" /Disable
@@ -918,7 +911,6 @@ schtasks /Change /TN "Microsoft\Windows\Time Zone\SynchronizeTimeZone" /Disable
 schtasks /Change /TN "Microsoft\Windows\TPM\Tpm-HASCertRetr" /Disable
 schtasks /Change /TN "Microsoft\Windows\TPM\Tpm-Maintenance" /Disable
 schtasks /Change /TN "Microsoft\Windows\UPnP\UPnPHostConfig" /Disable
-schtasks /Change /TN "Microsoft\Windows\UPnP\UPnPHostConfig" /Disable
 schtasks /Change /TN "Microsoft\Windows\User Profile Service\HiveUploadTask" /Disable
 schtasks /Change /TN "Microsoft\Windows\WCM\WiFiTask" /Disable
 schtasks /Change /TN "Microsoft\Windows\WDI\ResolutionHost" /Disable
@@ -932,6 +924,21 @@ schtasks /Change /TN "Microsoft\Windows\Work Folders\Work Folders Maintenance Wo
 schtasks /Change /TN "Microsoft\Windows\Workplace Join\Automatic-Device-Join" /Disable
 schtasks /Change /TN "Microsoft\Windows\WwanSvc\NotificationTask" /Disable
 schtasks /Change /TN "Microsoft\Windows\WwanSvc\OobeDiscovery" /Disable
+schtasks /Change /TN "MicrosoftEdgeUpdateTaskMachineCore" /Disable
+schtasks /Change /TN "MicrosoftEdgeUpdateTaskMachineUA" /Disable
+schtasks /Change /TN "Microsoft\Office/OfficeTelemetryAgentFallBack" /Disable
+schtasks /Change /TN "Microsoft\Office/OfficeTelemetryAgentLogOn" /Disable
+schtasks /Change /TN "Microsoft\Windows\.NET Framework/.NET Framework NGEN v4.0.30319 64 Critical" /Disable
+schtasks /Change /TN "Microsoft\Windows\.NET Framework/.NET Framework NGEN v4.0.30319 Critical" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience/Microsoft Compatibility Appraiser" /Disable
+schtasks /Change /TN "Microsoft\Windows\Application Experience/StartupAppTask" /Disable
+schtasks /Change /TN "Microsoft\Windows\BitLocker/BitLocker Encrypt All Drives" /Disable
+schtasks /Change /TN "Microsoft\Windows\BitLocker/BitLocker MDM policy Refresh" /Disable
+schtasks /Change /TN "Microsoft\Windows\CloudRestore/Backup" /Disable
+schtasks /Change /TN "Microsoft\Windows\CloudRestore/Restore" /Disable
+schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program/Consolidator" /Disable
+schtasks /Change /TN "Microsoft\Windows\FileHistory/File History (maintenance mode)" /Disable
+schtasks /Change /TN "Microsoft\Windows\SystemRestore\SR" /Disable
 
 
 echo .
@@ -965,6 +972,18 @@ echo .
 
 chkdsk
 
+
+echo .
+echo :::::::::::::::::::::::::::::
+echo ::::: Repairing Windows :::::
+echo :::::::::::::::::::::::::::::
+echo .
+
+dism /online /cleanup-image /checkhealth >nul 2>&1
+dism /online /cleanup-image /scanhealth
+dism /online /cleanup-image /restorehealth
+sfc /scannow
+dism /online /cleanup-image /startcomponentcleanup /resetbase
 
 echo .
 echo ::::::::::::::::::::::::::::::
@@ -1012,26 +1031,40 @@ echo ::::: Cleaning Windows Temp :::::
 echo :::::::::::::::::::::::::::::::::
 echo .
 
-rundll32.exe pnpclean.dll,RunDLL_PnpClean /drivers /maxclean
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 1
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 2
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 8
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 10
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 16
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 20
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 32
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 64
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 40
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 80
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 128
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 255
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 800
-C:\Windows\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4351
-pushd "C:\Windows\Temp" && (rd /s /q "C:\Windows\Temp" 2>nul & popd)
-pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
-pushd "C:\Windows\Prefetch" && (rd /s /q "C:\Windows\Prefetch" 2>nul & popd)
-pushd "C:\$Recycle.Bin" && (rd /s /q "C:\$Recycle.Bin" 2>nul & popd)
+takeown /s %computername% /u %username% /f "%WinDir%\System32\smartscreen.exe"
+icacls "%WinDir%\System32\smartscreen.exe" /grant:r %username%:F
+taskkill /im smartscreen.exe /f
+del "%WinDir%\System32\smartscreen.exe" /s /f /q
+taskkill /F /IM "CrossDeviceResume.exe" >nul 2>&1
+cd "%WINDIR%\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy" >nul 2>&1
+takeown /f "Microsoft.Web.WebView2.Core.dll" >nul 2>&1
+icacls "Microsoft.Web.WebView2.Core.dll" /grant administrators:F >nul 2>&1
+del /f /q "%WINDIR%\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\Microsoft.Web.WebView2.Core.dll" >nul 2>&1
+cd /d "%WINDIR%\System32" >nul 2>&1
+rundll32.exe pnpclean.dll,RunDLL_PnpClean /drivers /maxclean >nul 2>&1
+rd /s /q "%SystemDrive%\$GetCurrent" >nul 2>&1
+rd /s /q "%SystemDrive%\$SysReset" >nul 2>&1
+rd /s /q "%SystemDrive%\$Windows.~BT" >nul 2>&1
+rd /s /q "%SystemDrive%\$Windows.~WS" >nul 2>&1
+rd /s /q "%SystemDrive%\$WinREAgent" >nul 2>&1
+rd /s /q "%SystemDrive%\OneDriveTemp" >nul 2>&1
+rd /s /q "%SystemDrive%\Windows.old" >nul 2>&1
+pushd "%SystemDrive%\Recovery" && (rd /s /q "%SystemDrive%\Recovery" 2>nul & popd)
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 1 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 2 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 8 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 10 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 16 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 20 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 32 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 64 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 40 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 80 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 128 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 255 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 800 >nul 2>&1
+%WINDIR%\System32\rundll32.exe InetCpl.cpl, ClearMyTracksByProcess 4351 >nul 2>&1
 pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\INetCookies" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCookies" 2>nul & popd)
@@ -1039,6 +1072,16 @@ pushd "%LocalAppData%\Microsoft\Windows\IECompatCache" && (rd /s /q "%LocalAppDa
 pushd "%LocalAppData%\Microsoft\Windows\IECompatUaCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatUaCache" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" && (rd /s /q "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" 2>nul & popd)
+pushd "%LocalAppData%\Microsoft\Windows\WebCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WebCache" 2>nul & popd)
+pushd "%WINDIR%\Prefetch" && (rd /s /q "%WINDIR%\Prefetch" 2>nul & popd)
+pushd "%WINDIR%\SoftwareDistribution\Download" && (rd /s /q "%WINDIR%\SoftwareDistribution\Download" 2>nul & popd)
+pushd "%SystemDrive%\$Recycle.Bin" && (rd /s /q "%SystemDrive%\$Recycle.Bin" 2>nul & popd)
+pushd "%WINDIR%\System32\winevt\Logs" && (rd /s /q "%WINDIR%\System32\winevt\Logs" 2>nul & popd)
+pushd "%WINDIR%\Logs" && (rd /s /q "%WINDIR%\Logs" 2>nul & popd)
+pushd "%temp%" && (rd /s /q "%temp%" 2>nul & popd)
+pushd "%SystemDrive%\Temp\" && (rd /s /q "%SystemDrive%\Temp\" 2>nul & popd)
+pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
+pushd "%WINDIR%\Temp" && (rd /s /q "%WINDIR%\Temp" 2>nul & popd)
 
 
 echo .
@@ -1048,10 +1091,10 @@ echo :::::::::::::::::::::::::::::
 echo .
 
 defrag C: /O
-pushd "C:\Windows\Temp" && (rd /s /q "C:\Windows\Temp" 2>nul & popd)
-pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
-pushd "C:\Windows\Prefetch" && (rd /s /q "C:\Windows\Prefetch" 2>nul & popd)
-pushd "C:\$Recycle.Bin" && (rd /s /q "C:\$Recycle.Bin" 2>nul & popd)
+
+
+echo :: Optimization completed successfully. :: Script by S.H.E.I.K.H
+
 pushd "%LocalAppData%\Microsoft\Windows\WER" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WER" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\INetCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCache" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\INetCookies" && (rd /s /q "%LocalAppData%\Microsoft\Windows\INetCookies" 2>nul & popd)
@@ -1059,5 +1102,13 @@ pushd "%LocalAppData%\Microsoft\Windows\IECompatCache" && (rd /s /q "%LocalAppDa
 pushd "%LocalAppData%\Microsoft\Windows\IECompatUaCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IECompatUaCache" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" && (rd /s /q "%LocalAppData%\Microsoft\Windows\IEDownloadHistory" 2>nul & popd)
 pushd "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" && (rd /s /q "%LocalAppData%\Microsoft\Windows\Temporary Internet Files" 2>nul & popd)
-
-echo :: Optimization completed successfully. :: Script by S.H.E.I.K.H
+pushd "%LocalAppData%\Microsoft\Windows\WebCache" && (rd /s /q "%LocalAppData%\Microsoft\Windows\WebCache" 2>nul & popd)
+pushd "%WINDIR%\Prefetch" && (rd /s /q "%WINDIR%\Prefetch" 2>nul & popd)
+pushd "%WINDIR%\SoftwareDistribution\Download" && (rd /s /q "%WINDIR%\SoftwareDistribution\Download" 2>nul & popd)
+pushd "%SystemDrive%\$Recycle.Bin" && (rd /s /q "%SystemDrive%\$Recycle.Bin" 2>nul & popd)
+pushd "%WINDIR%\System32\winevt\Logs" && (rd /s /q "%WINDIR%\System32\winevt\Logs" 2>nul & popd)
+pushd "%WINDIR%\Logs" && (rd /s /q "%WINDIR%\Logs" 2>nul & popd)
+pushd "%temp%" && (rd /s /q "%temp%" 2>nul & popd)
+pushd "%SystemDrive%\Temp\" && (rd /s /q "%SystemDrive%\Temp\" 2>nul & popd)
+pushd "%LOCALAPPDATA%\Temp" && (rd /s /q "%LOCALAPPDATA%\Temp" 2>nul & popd)
+pushd "%WINDIR%\Temp" && (rd /s /q "%WINDIR%\Temp" 2>nul & popd)
