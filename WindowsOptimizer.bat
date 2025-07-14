@@ -30,7 +30,7 @@ ECHO .
 ECHO For Post-install use only.
 ECHO Recommended to re-launch after Windows updates.
 ECHO .
-ECHO Press any key to start optimization
+ECHO Press any key to start optimization ...
 Pause >null
 
 
