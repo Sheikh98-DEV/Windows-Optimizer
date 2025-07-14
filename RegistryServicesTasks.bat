@@ -29,7 +29,8 @@ ECHO :::::::::::::::::::::::::::::::::::::::
 ECHO .
 ECHO For Using after OOShutUp
 ECHO .
-Pause
+ECHO Press any key to start optimization ...
+Pause >null
 
 
 ECHO .
@@ -2849,7 +2850,7 @@ ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO :::: Warning! Press any key to shutdown or simply close this batch file. ::::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Pause
+Pause >null
 
 RD /S /Q "%SystemDrive%\$GetCurrent" >nul 2>&1
 RD /S /Q "%SystemDrive%\$SysReset" >nul 2>&1
