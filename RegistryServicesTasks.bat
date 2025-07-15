@@ -2839,7 +2839,7 @@ ECHO :: Optimization completed successfully. :: Script by S.H.E.I.K.H
 
 ECHO .
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO :::: Warning! Press any key to shutdown or simply close this batch file. ::::
+ECHO :::: Warning. Press any key to shutdown or simply close this batch file. ::::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Pause >null
