@@ -95,7 +95,6 @@ REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /V "Sea
 REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "SystemResponsiveness" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "NetworkThrottlingIndex" /T "REG_DWORD" /D "4294967295" /F
 REG Add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /V "ClearPageFileAtShutdown" /T "REG_DWORD" /D "0" /F
-REG Add "HKLM\SYSTEM\ControlSet001\Services\Ndu" /V "Start" /T "REG_DWORD" /D "2" /F
 REG Add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /V "IRPStackSize" /T "REG_DWORD" /D "30" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /V "HideSCAMeetNow" /T "REG_DWORD" /D "1" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /V "ScoobeSystemSettingEnabled" /T "REG_DWORD" /D "0" /F
@@ -167,7 +166,6 @@ REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /V "Sea
 REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "SystemResponsiveness" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "NetworkThrottlingIndex" /T "REG_DWORD" /D "4294967295" /F
 REG Add "HKCU\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /V "ClearPageFileAtShutdown" /T "REG_DWORD" /D "0" /F
-REG Add "HKCU\SYSTEM\ControlSet001\Services\Ndu" /V "Start" /T "REG_DWORD" /D "2" /F
 REG Add "HKCU\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /V "IRPStackSize" /T "REG_DWORD" /D "30" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /V "HideSCAMeetNow" /T "REG_DWORD" /D "1" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /V "ScoobeSystemSettingEnabled" /T "REG_DWORD" /D "0" /F
@@ -369,9 +367,6 @@ SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Schedu
 SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Verification" /Disable
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "2" /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontReportInfectionInformation" /T "REG_DWORD" /D "2" /F
-REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WdNisDrv" /V "Start" /T "REG_DWORD" /D "2" /F 
-REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WdBoot" /V "Start" /T "REG_DWORD" /D "2" /F 
-REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WdFilter" /V "Start" /T "REG_DWORD" /D "2" /F
 Regsvr32 /S /U "%ProgramFiles%\Windows Defender\shellext.dll"
 REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableAntiSpywareRealtimeProtection" /T "REG_DWORD" /D "1" /F
 REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F
@@ -402,9 +397,6 @@ REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\UX Configuration" /V "DisableP
 REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Scan" /V "AutomaticallyCleanAfterScan" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "2" /F
 REG Add "HKCU\SOFTWARE\Policies\Microsoft\MRT" /V "DontReportInfectionInformation" /T "REG_DWORD" /D "2" /F
-REG Add "HKCU\SYSTEM\CurrentControlSet\Services\WdNisDrv" /V "Start" /T "REG_DWORD" /D "2" /F 
-REG Add "HKCU\SYSTEM\CurrentControlSet\Services\WdBoot" /V "Start" /T "REG_DWORD" /D "2" /F 
-REG Add "HKCU\SYSTEM\CurrentControlSet\Services\WdFilter" /V "Start" /T "REG_DWORD" /D "2" /F
 REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableAntiSpywareRealtimeProtection" /T "REG_DWORD" /D "1" /F
 REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F
 REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DpaDisabled" /T "REG_DWORD" /D "1" /F
@@ -1059,10 +1051,10 @@ ECHO .
 
 REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /F
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /V "DisablePCA" /T "REG_DWORD" /D "2" /F
-REG Add "HKLM\SYSTEM\CurrentControlSet\Services\PcaSvc" /V "Start" /T "REG_DWORD" /D "2" /F
+REG Add "HKLM\SYSTEM\CurrentControlSet\Services\PcaSvc" /V "Start" /T "REG_DWORD" /D "3" /F
 REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /F
 REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /V "DisablePCA" /T "REG_DWORD" /D "2" /F
-REG Add "HKCU\SYSTEM\CurrentControlSet\Services\PcaSvc" /V "Start" /T "REG_DWORD" /D "2" /F
+REG Add "HKCU\SYSTEM\CurrentControlSet\Services\PcaSvc" /V "Start" /T "REG_DWORD" /D "3" /F
 
 
 ECHO .
@@ -1274,7 +1266,7 @@ REG Add "HKCU\SYSTEM\ControlSet001\Services\RpcLocator" /V "Start" /T "REG_DWORD
 
 ECHO .
 ECHO ::::::::::::::::::::::::::::::::
-ECHO ::::: Disabling Smart CaRD :::::
+ECHO ::::: Disabling Smart Card :::::
 ECHO ::::::::::::::::::::::::::::::::
 ECHO .
 
