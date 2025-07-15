@@ -996,7 +996,7 @@ REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" 
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F
-REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled/T "REG_DWORD" /D "0" /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F
@@ -1021,7 +1021,7 @@ REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" 
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F
-REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled/T "REG_DWORD" /D "0" /F
+REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F
@@ -3813,7 +3813,7 @@ REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" 
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F
-REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled/T "REG_DWORD" /D "0" /F
+REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKLM\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F
@@ -3838,7 +3838,7 @@ REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" 
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F
-REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled/T "REG_DWORD" /D "0" /F
+REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F
 REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F
