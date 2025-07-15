@@ -1,0 +1,58 @@
+Windows Registry Editor Version 5.00
+
+; Windows Explorer Options
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+; Open File Explorer to This PC
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"LaunchTo"=dword:00000001
+;;
+
+; Disable recently used folders
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowRecent"=dword:00000000
+;;
+
+; Disable frequently used folders
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowFrequent"=dword:00000000
+;;
+
+; Disable Show files from Office.com
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"ShowCloudFilesInQuickAccess"=dword:00000000
+;;
+
+; Remove Gallery from Navigation Pane in File Explorer
+;
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+;;
+
+; Remove Home (Quick access) from This PC
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"HubMode"=dword:00000001
+;;
+
+; Show hidden files, folders and drives
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Hidden"=dword:00000001
+;;
+
+; Show extensions for known file types
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"HideFileExt"=dword:00000000
+;;
+
+; Always show more details in copy dialog
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager]
+"EnthusiastMode"=dword:00000001
+;;

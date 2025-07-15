@@ -1,0 +1,240 @@
+Windows Registry Editor Version 5.00
+
+; Windows Defender Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+; Disable System GuaRD Runtime Monitor Broker (when disabled, it might cause BSOD Critical Process Died)
+;
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\SgrmBroker]
+"Start"=dword:00000004
+;;
+
+; Disable Antivirus Notifications
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows Defender Security Center\Notifications]
+"DisableNotifications"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender Security Center\Notifications]
+"DisableEnhancedNotifications"=dword:00000001
+;;
+
+; Disable Security and Maitenance Notification
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance]
+"Enabled"=dword:00000000
+;;
+
+; Disable Real-time protection
+;
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender]
+"AllowFastServiceStartup"=dword:00000000
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender]
+"DisableAntiVirus"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender]
+"DisableSpecialRunningModes"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender]
+"ServiceKeepAlive"=dword:00000000
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\MpEngine]
+"MpEnablePus"=dword:00000000
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableBehaviorMonitoring"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableIOAVProtection"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableOnAccessProtection"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableRealtimeMonitoring"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableRoutinelyTakingAction"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableScanOnRealtimeEnable"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Reporting]
+"DisableEnhancedNotifications"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\SpyNet]
+"DisableBlockAtFirstSeen"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\SpyNet]
+"SpynetReporting"=dword:00000000
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\SpyNet]
+"SubmitSamplesConsent"=dword:00000002
+;;
+
+; Disable Logging
+;
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\WMI\Autologger\DefenderApiLogger]
+"Start"=dword:00000000
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger]
+"Start"=dword:00000000
+;;
+
+; Disable Systray icon
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run]
+"SecurityHealth"=""
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run]
+"SecurityHealth"=""
+;;
+
+; Disable Services
+;
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\WdBoot]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\MDCoreSvc]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\WdFilter]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\WdNisDrv]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\WdNisSvc]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\WinDefend]
+"Start"=dword:00000004
+;;
+
+; Disable Web Threat Defense Service (Phishing protection)
+;
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\webthreatdefsvc]
+"Start"=dword:00000004
+;;
+
+; Disable Web Threat Defense User Service (Phishing protection)
+;
+[HKEY_CURRENT_USER\System\CurrentControlSet\Services\webthreatdefusersvc]
+"Start"=dword:00000004
+;;
+
+; Disable Windows SmartScreen
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"SmartScreenEnabled"="Off"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"SmartScreenEnabled"="Off"
+[HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer]
+"SmartScreenEnabled"="Off"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000000
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\System]
+"EnableSmartScreen"=dword:00000000
+;;
+
+; Disable SmartScreen Filter in Microsoft Edge
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Edge\SmartScreenEnabled]
+""=dword:00000000
+;;
+
+; Disable SmartScreen PUA in Microsoft Edge
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Edge\SmartScreenPuaEnabled]
+""=dword:00000000
+;;
+
+; Disable Windows SmartScreen for Windows Store Apps
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000000
+;;
+
+; Disable Smart App Control blocking legitimate apps
+;
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender]
+"VerifiedAndReputablePolicyState"=dword:00000000
+;;
+
+
+; Other Registries and finishing setup
+;
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\CI\Policy]
+"PUAProtection"=dword:00000000
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\CI\Policy]
+"DisableAntiSpyware"=dword:00000001
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\CI\Policy]
+"DisableAntiVirus"=dword:00000001
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"SettingsPageVisibility"="hide:home"
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\Sense]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\WdNisSvc]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\WdFilter]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\WinDefend]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SgrmBroker]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SpyNetReporting"=dword:00000000
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SubmitSamplesConsent"=dword:00000002
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableBehaviorMonitoring"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableOnAccessProtection"=dword:00000002
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableScanOnRealtimeEnable"=dword:00000002
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableRealtimeMonitoring"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MRT]
+"DontOfferThroughWUAU"=dword:00000002
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MRT]
+"DontReportInfectionInformation"=dword:00000002
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MRT]
+"DontReportInfectionInformation"=dword:00000001
+;;
+
+; Disable Windows Firewall
+;
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\mpssvc]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\BFE]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+"EnableFirewall"=dword:00000000
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+"DisableNotifications"=dword:00000001
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+"DoNotAllowExceptions"=dword:00000001
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
+"EnableFirewall"=dword:00000000
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
+"DisableNotifications"=dword:00000001
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile]
+"DoNotAllowExceptions"=dword:00000001
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
+"EnableFirewall"=dword:00000000
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
+"DisableNotifications"=dword:00000001
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
+"DoNotAllowExceptions"=dword:00000001
+;;
+
+
+; disable watson malware reports
+;
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
+"DisableGenericReports"=dword:00000002
+;;
+
+; disable malware diagnostic data 
+;
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MRT]
+"DontReportInfectionInformation"=dword:00000002
+;;
+
+; Disable  setting override for reporting to Microsoft MAPS
+;
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"LocalSettingOverrideSpynetReporting"=dword:00000000
+;;
+
+; disable spynet Defender reporting
+;
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SpynetReporting"=dword:00000000
+;;
+
+; do not send malware samples for further analysis
+;
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SubmitSamplesConsent"=dword:00000002
+;;

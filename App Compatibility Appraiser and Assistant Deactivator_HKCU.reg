@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+; App Compatibility Appraiser and Assistant Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
+"DisablePCA"=dword:00000002
+[HKEY_CURRENT_USER\SYSTEM\CurrentControlSet\Services\PcaSvc]
+"Start"=dword:00000003
+;;

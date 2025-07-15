@@ -1,0 +1,32 @@
+Windows Registry Editor Version 5.00
+
+; XBOX and GameDVR Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
+"value"="0"
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
+"AllowGameDVR"=dword:00000000
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_Enabled"=dword:00000000
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
+"value"="0"
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\XboxNetApiSvc]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\XblGameSave]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\XblAuthManager]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\xbgm]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\XboxGipSvc]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_FSEBehaviorMode"=dword:00000002
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_HonorUserFSEBehaviorMode"=dword:00000000
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_DXGIHonorFSEWindowsCompatible"=dword:00000000
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_EFSEFeatureFlags"=dword:00000000
+;;

@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+; Location services Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+"DisableWindowsLocationProvider"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+"DisableLocationScripting"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+"DisableLocation"=dword:00000001
+;;

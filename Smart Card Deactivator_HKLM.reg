@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00
+
+; Smart Card Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SCardSvr]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\ScDeviceEnum]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SCPolicySvc]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\CertPropSvc]
+"Start"=dword:00000004
+;;

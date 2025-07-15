@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+; App launch tracking Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000000
+;;

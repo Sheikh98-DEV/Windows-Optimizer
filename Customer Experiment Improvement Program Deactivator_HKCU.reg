@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+; Customer Experiment Improvement Program Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
+"CEIPEnable"=dword:00000000
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Messenger\Client]
+"CEIP"=dword:00000002
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\SQMClient]
+"CorporateSQMURL"="0.0.0.0"
+;;

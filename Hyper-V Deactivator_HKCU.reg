@@ -1,0 +1,24 @@
+Windows Registry Editor Version 5.00
+
+; Hyper-V Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\HvHost]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmickvpexchange]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmicguestinterface]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmicshutdown]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmicheartbeat]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmicvmsession]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmicrdv]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmictimesync]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\vmicvss]
+"Start"=dword:00000004
+;;

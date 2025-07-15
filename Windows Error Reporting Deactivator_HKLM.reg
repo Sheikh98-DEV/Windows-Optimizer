@@ -1,0 +1,77 @@
+Windows Registry Editor Version 5.00
+
+; Windows Error Reporting Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+; Disable Services
+;
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WerSvc]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WpnService]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WpnUserService]
+"Start"=dword:00000004
+;;
+
+; Disable Microsoft Support Diagnostic Tool MSDT
+;
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy]
+"DisableQueryechooteServer"=dword:00000000
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy]
+"EnableQueryechooteServer"=dword:00000000
+;;
+
+; Disable System Debugger
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AeDebug]
+"Auto"="0"
+;;
+
+; Disable Windows Error Reporting
+;
+[HKEY_LOCAL_MACHINE\Software\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
+;;
+
+; DefaultConsent
+;
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting\Consent]
+"DefaultConsent"=dword:00000000
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting\Consent]
+"DefaultOverrideBehavior"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting\Consent]
+"DefaultConsent"=dword:00000000
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting\Consent]
+"DefaultOverrideBehavior"=dword:00000001
+;;
+
+; Disable WER sending second-level data
+;
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"DontSendAdditionalData"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"DontSendAdditionalData"=dword:00000001
+;;
+
+; Disable WER crash dialogs, popups
+;
+[HKEY_LOCAL_MACHINE\Software\Microsoft\PCHealth\ErrorReporting]
+"ShowUI"=dword:00000000
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"DontShowUI"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"DontShowUI"=dword:00000001
+;;
+
+; Disable WER logging
+;
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"LoggingDisabled"=dword:00000001
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows Error Reporting]
+"LoggingDisabled"=dword:00000001
+;;

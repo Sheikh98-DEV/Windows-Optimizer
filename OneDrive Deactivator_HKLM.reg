@@ -1,0 +1,30 @@
+Windows Registry Editor Version 5.00
+
+; OneDrive Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+; Disable onesync
+;
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\OneSyncSvc]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\OneSyncSvc_402ac]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+"DisableFileSyncNGSC"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+"DisableFileSync"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+"DisableMeteredNetworkFileSync"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+"DisableLibrariesDefaultSaveToOneDrive"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\OneDrive]
+"DisablePersonalSync"=dword:00000002
+;;
+
+; Remove onedrive from explorer and quick access
+;
+[HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+[HKEY_CLASSES_ROOT\Wow6432Node\{018D5C66-4533-4308-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+;;

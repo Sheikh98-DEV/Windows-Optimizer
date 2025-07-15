@@ -1,0 +1,20 @@
+Windows Registry Editor Version 5.00
+
+; Handwriting and inking and contacts Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\InputPersonalization]
+"RestrictImplicitInkCollection"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+"RestrictImplicitInkCollection"=dword:00000002
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HandwritingErrorReports]
+"PreventHandwritingErrorReports"=dword:00000002
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\TabletPC]
+"PreventHandwritingDataSharing"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC]
+"PreventHandwritingDataSharing"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+"AllowInputPersonalization"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore]
+"HarvestContacts"=dword:00000000
+;;

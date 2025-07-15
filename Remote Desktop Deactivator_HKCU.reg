@@ -1,0 +1,20 @@
+Windows Registry Editor Version 5.00
+
+; Remote Desktop Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\RasAuto]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\RasMan]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\SessionEnv]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\TermService]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\UmRdpService]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\RemoteRegistry]
+"Start"=dword:00000004
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\RpcLocator]
+"Start"=dword:00000004
+;;

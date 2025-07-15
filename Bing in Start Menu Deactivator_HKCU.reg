@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+; Bing in Start Menu Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"ShowRunAsDifferentUserInStart"=dword:00000001
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+;;

@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+; BitLocker Deactivator
+; Created by S.H.E.I.K.H (GitHub: Sheikh98-DEV)
+
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Control\BitLocker]
+"PreventDeviceEncryption"=dword:00000001
+[HKEY_CURRENT_USER\SYSTEM\ControlSet001\Services\BDESVC]
+"Start"=dword:00000004
+;;
