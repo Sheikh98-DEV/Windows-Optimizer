@@ -2,7 +2,7 @@
 
 ▎Description
 
-This project contains a script designed to optimize and repair the Windows operating system. The script aims to manage registry settings, services, and tasks to enhance overall system performance and speed. By utilizing this tool, users can potentially improve the efficiency of their Windows devices.
+This project contains a script designed to optimize and repair the Windows operating system. The script aims to manage registry settings, services, and tasks to enhance overall system performance and speed. By utilizing this tool, users can potentially improve the efficiency of their Windows devices. This script will not affect Windows update, so you can still recieve latest updates after running it.
 
 
 ▎Important Notice
