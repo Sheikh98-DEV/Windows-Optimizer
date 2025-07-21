@@ -3,6 +3,7 @@ SETLOCAL EnableDelayedExpansion
 SET Version=1.0.0
 Set ReleaseTime=Jul 21, 2025
 Title Windows Optimizer Script - by S.H.E.I.K.H (V. %version%)
+
 CD /D "%~dp0"
 CLS
 
