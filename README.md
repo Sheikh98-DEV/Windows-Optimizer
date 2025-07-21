@@ -14,12 +14,22 @@ Please use this script with caution and a full understanding of its functions. W
 ▎Disabled parts
 
 1- Defender
+
 2- Xbox
+
 3- AI features (CoPilot & Recall)
+
 4- OneDrive
+
 5- BitLocker (Backup your keys)
+
 6- Recovery and Restore point
+
 7- Hibernation
+
 8- Telemetry
+
 9- Cloud services
+
 10- Windows search indexing
+
