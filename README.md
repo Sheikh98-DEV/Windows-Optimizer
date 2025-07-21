@@ -36,3 +36,5 @@ Please use this script with caution and a full understanding of its functions. W
 
 10- Windows search indexing
 
+<img width="1280" height="439" alt="image" src="https://github.com/user-attachments/assets/6f3a760c-7fc5-4d2d-a7b7-0ce02d98f73d" />
+
