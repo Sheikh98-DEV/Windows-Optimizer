@@ -15,7 +15,7 @@ Title Windows Optimizer Script - by S.H.E.I.K.H (V. %version%)
 :: End Routine to check if being run as Admin ::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-CD" /D "%~dp0"
+CD /D "%~dp0"
 CLS
 
 ECHO :::::::::::::::::::::::::::::::::::::::
