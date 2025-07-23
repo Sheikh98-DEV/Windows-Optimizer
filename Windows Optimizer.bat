@@ -1,7 +1,7 @@
 @ECHO OFF
 SETLOCAL EnableDelayedExpansion
 SET Version=1.0.0
-Set ReleaseTime=Jul 21, 2025
+Set ReleaseTime=Jul 23, 2025
 Title Windows Optimizer Script - by S.H.E.I.K.H (V. %version%)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -98,7 +98,6 @@ ECHO.
 DISM /Online /Cleanup-Image /CheckHealth >nul 2>&1
 DISM /Online /Cleanup-Image /ScanHealth
 DISM /Online /Cleanup-Image /RestoreHealth
-SFC /VerifyOnly
 SFC /ScanNow
 DISM /Online /Cleanup-Image /AnalyzeComponentStore
 DISM /Online /Cleanup-Image /StartComponentCleanup
@@ -117,17 +116,9 @@ REG Query "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education" >nul 
 REG Query "HKLM\SOFTWARE\Microsoft\Siuf\Rules" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Siuf\Rules" /V "NumberOfSIUFInPeriod" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "NetworkThrottlingIndex" /T "REG_DWORD" /D "4294967295" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "SystemResponsiveness" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /V "SensorPermissionState" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /V "SensorPermissionState" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" /V "RPSessionInterval" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "NumberOfSIUFInPeriod" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338387Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353698Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /V "DODownloadMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /V "SearchOrderConfig" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /V "DisabledByGroupPolicy" /T "REG_DWORD" /D "1" /F) >nul 2>&1
@@ -171,7 +162,7 @@ ECHO Disabling Tamper Protection
 REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Features" /V "TamperProtection" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO Disabling System GuaRD Runtime Monitor Broker (when disabled, it might cause BSOD Critical Process Died)
+ECHO Disabling System Guard Runtime Monitor Broker (when disabled, it might cause BSOD Critical Process Died)
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REG Query "HKLM\System\CurrentControlSet\Services\SgrmBroker" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\SgrmBroker" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 
@@ -194,25 +185,22 @@ REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings
 :::::::::::::::::::::::::::::::::::
 ECHO Disabling Real-time Protection
 :::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /V "AllowFastServiceStartup" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableAntiVirus" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableSpecialRunningModes" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /V "ServiceKeepAlive" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine" /V "MpEnablePus" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableBehaviorMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableIOAVProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableOnAccessProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRoutinelyTakingAction" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableScanOnRealtimeEnable" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /V "DisableEnhancedNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" /V "DisableBlockAtFirstSeen" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" /V "SpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableAntiSpywareRealtimeProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DpaDisabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /V "AllowFastServiceStartup" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /V "DisableAntiVirus" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /V "DisableSpecialRunningModes" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender" /V "ServiceKeepAlive" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine" /V "MpEnablePus" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableBehaviorMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableIOAVProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableOnAccessProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRoutinelyTakingAction" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableScanOnRealtimeEnable" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\Reporting" /V "DisableEnhancedNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /V "DisableBlockAtFirstSeen" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /V "SpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 
 ::::::::::::::::::::::
 ECHO Disabling Logging
@@ -223,11 +211,12 @@ REG Query "HKLM\System\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLog
 ::::::::::::::::::::
 ECHO Disabling Tasks
 ::::::::::::::::::::
-SchTasks /Change /TN "Microsoft\Windows\ExploitGuard\ExploitGuaRD MDM policy Refresh" /Disable >nul 2>&1  >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /Disable >nul 2>&1  >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable >nul 2>&1  >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /Disable >nul 2>&1  >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Verification" /Disable >nul 2>&1  >nul 2>&1
+SchTasks /Change /TN "Microsoft\Windows\ExploitGuard\ExploitGuaRD MDM policy Refresh" /Disable >nul 2>&1
+SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /Disable >nul 2>&1
+SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /Disable >nul 2>&1 
+SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable >nul 2>&1
+SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /Disable >nul 2>&1
+SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Verification" /Disable >nul 2>&1
 
 :::::::::::::::::::::::::::
 ECHO Disabling Systray icon
@@ -245,37 +234,29 @@ REG Query "HKCR\Drive\shellex\ContextMenuHandlers\EPP" >nul 2>&1 && if %ERRORLEV
 :::::::::::::::::::::::
 ECHO Disabling Services
 :::::::::::::::::::::::
-REG Query "HKLM\System\CurrentControlSet\Services\WdBoot" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\WdBoot" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Services\MDCoreSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\MDCoreSvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
+REG Query "HKLM\System\CurrentControlSet\Services\WdBoot" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\WdBoot" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Services\WdFilter" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\WdFilter" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Services\WdNisDrv" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\WdNisDrv" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Services\WdNisSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\WdNisSvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Services\WinDefend" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\WinDefend" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\System\CurrentControlSet\Services\Sense" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Services\Sense" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SamSs" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SamSs" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SgrmBroker" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SgrmBroker" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling Web Threat Defense Service (Phishing Protection)
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 SC Stop "webthreatdefsvc" >nul 2>&1
-SC Config "webthreatdefsvc" Start=Disabled >nul 2>&1
+SC Query "webthreatdefsvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "webthreatdefsvc" Start=Disabled) >nul 2>&1
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling Web Threat Defense User Service (Phishing Protection)
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 SC Stop "webthreatdefusersvc" >nul 2>&1
-SC Config "webthreatdefusersvc" Start=Disabled >nul 2>&1
+SC Query "webthreatdefusersvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "webthreatdefusersvc" Start=Disabled) >nul 2>&1
 
 ::::::::::::::::::::::::::::::::::
 ECHO Disabling Windows SmartScreen
 ::::::::::::::::::::::::::::::::::
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V "SmartScreenEnabled" /T "REG_SZ" /D "Off" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" /V "SmartScreenEnabled" /T "REG_SZ" /D "Off" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /V "EnableWebContentEvaluation" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /V "EnableSmartScreen" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling SmartScreen Filter in Microsoft Edge
@@ -308,65 +289,11 @@ REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %E
 ::::::::::::::::::::::::::::::::::
 ECHO Disabling Other Registry Keys
 ::::::::::::::::::::::::::::::::::
-NET Stop "Sense" >nul 2>&1
-NET Stop "WdFilter" >nul 2>&1
-NET Stop "WdNisSvc" >nul 2>&1
-NET Stop "WinDefend" >nul 2>&1
-REG Query "HKLM\System\CurrentControlSet\Control\CI\Policy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\CI\Policy" /V "PUAProtection" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /V "SettingsPageVisibility" /T "REG_SZ" /D "hide:home" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Control\CI\Policy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\CI\Policy" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\System\CurrentControlSet\Control\CI\Policy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\CI\Policy" /V "DisableAntiVirus" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /V "SettingsPageVisibility" /T "REG_SZ" /D "hide:home" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender" /V "OneTimeSqmDataSent" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender\UX Configuration" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\UX Configuration" /V "DisablePrivacyMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender\Scan" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender\Scan" /V "AutomaticallyCleanAfterScan" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender" /V "ProductStatus" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows Defender" /V "ManagedDefenderProductType" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /Disable >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /Disable >nul 2>&1
-SchTasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Verification" /Disable >nul 2>&1
-Regsvr32 /S /U "%ProgramFiles%\Windows Defender\shellext.dll"
-
-:::::::::::::::::::::::::::::::
-ECHO Disabling Windows Firewall
-:::::::::::::::::::::::::::::::
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\BFE" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\BFE" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /V "EnableFirewall" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /V "DoNotAllowExceptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /V "EnableFirewall" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /V "DoNotAllowExceptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /V "EnableFirewall" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /V "DoNotAllowExceptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-
-:::::::::::::::::::::::::::::::::::::
-ECHO Disabling Watson Malware Reports
-:::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /V "DisableGenericReports" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-
-::::::::::::::::::::::::::::::::::::::
-ECHO Disabling Malware Diagnostic Data
-::::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontReportInfectionInformation" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO Disabling Setting Override for Reporting to Microsoft MAPS
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "LocalSettingOverrideSpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-
-::::::::::::::::::::::::::::::::::::::::
-ECHO Disabling Spynet Defender Reporting
-::::::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-ECHO Disabling Sending Malware Samples for Further Analysis
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
+REG Query "HKLM\System\CurrentControlSet\Control\CI\Policy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\CI\Policy" /V "PUAProtection" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO.
 ECHO Done.
@@ -378,27 +305,39 @@ ECHO ::::: Disabling Auto-install Subscribed/Suggested Apps :::::
 ECHO ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "FeaturemanagementEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338393Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353694Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353696Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "FeaturemanagementEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "NumberOfSIUFInPeriod" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338387Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338393Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353694Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353696Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353698Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+
+ECHO Done.
+
+
+ECHO.
+ECHO :::::::::::::::::::::::::::::::::::::::::::
+ECHO ::::: Disabling Delivery Optimization :::::
+ECHO :::::::::::::::::::::::::::::::::::::::::::
+ECHO.
+
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -432,12 +371,12 @@ ECHO ::::: Disabling Hibernation :::::
 ECHO :::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\System\CurrentControlSet\Control\Session Manager\Power" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\Session Manager\Power" /V "HibernateEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /V "ShowHibernateOption" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /V "HiberbootEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-powercfg.exe /hibernate off >nul 2>&1
-powercfg /hibernate off >nul 2>&1
+REG Query "HKLM\System\CurrentControlSet\Control\Session Manager\Power" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\Session Manager\Power" /V "HibernateEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 powercfg -h off >nul 2>&1
+powercfg /hibernate off >nul 2>&1
+powercfg.exe /hibernate off >nul 2>&1
 
 ECHO Done.
 
@@ -498,9 +437,6 @@ ECHO ::::: Disabling Windows Error Reporting :::::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" /V "Disabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /V "Disabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling Microsoft Support Diagnostic Tool MSDT
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -517,10 +453,9 @@ ECHO Disabling Windows Error Reporting Registry keys
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 REG Query "HKLM\SOFTWARE\Microsoft\PCHealth\ErrorReporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\PCHealth\ErrorReporting" /V "DoReport" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /V "Disabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /V "Disabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" /V "Disabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" /V "DefaultConsent" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" /V "DefaultOverrideBehavior" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting" /V "Disabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling WER Sending Second-level Data
@@ -551,7 +486,7 @@ ECHO ::::::::::::::::::::::::::::::::::::
 ECHO.
 
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" /V "PeopleBand" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /V "LongPathsEnabled" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /V "LongPathsEnabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /V "LongPathsEnabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ::::::::::::::::::::::::::::::::::::
 ECHO Disabling Recently Used Folders
@@ -571,24 +506,24 @@ REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 &&
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling Network Icon from Navigation Panel / Right in Nav Panel
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-REG Query "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /V "Attributes" /T "REG_DWORD" /D "2962489444" /F) >nul 2>&1
+REG Query "HKCR\CLSID" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCR\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder" /V "Attributes" /T "REG_DWORD" /D "2962489444" /F) >nul 2>&1
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling Gallery from Navigation Pane in File Explorer
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Classes\CLSID" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 :::::::::::::::::::::::::::::::::::::
 ECHO Disabling 3D Folders from This PC
 :::::::::::::::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /F) >nul 2>&1
 
 ::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Disabling Home (Quick access)from This PC
 ::::::::::::::::::::::::::::::::::::::::::::::
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V "HubMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Setting Show Hidden Files, Folders and Drives
@@ -620,10 +555,21 @@ ECHO ::::: Disabling Telemetry :::::
 ECHO :::::::::::::::::::::::::::::::
 ECHO.
 
+REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization" /V "RestrictImplicitTextCollection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /V "HarvestContacts" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Input\TIPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Input\TIPC" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\MediaPlayer\Preferences" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\MediaPlayer\Preferences" /V "UsageTracking" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Personalization\Settings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Personalization\Settings" /V "AcceptedPrivacyPolicy" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /V "HasAccepted" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "TaskbarMn" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /V "AllowTelemetry" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /V "MaxTelemetryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /V "TailoredExperiencesWithDiagnosticDataEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /V "NoGenTicket" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V "AllowTelemetry" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V "DoNotShowFeedbackNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat" /V "ChatIcon" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\office\15.0\osm" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\office\15.0\osm" /V "enablefileobfuscation" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\office\15.0\osm" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\office\15.0\osm" /V "enablelogging" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -656,15 +602,7 @@ REG Query "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\osm\preventedsolutiontyp
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\outlook\security" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\outlook\security" /V "level" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\powerpoint\security" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\powerpoint\security" /V "blockcontentexecutionfrominternet" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\word\security" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\office\16.0\word\security" /V "blockcontentexecutionfrominternet" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization" /V "RestrictImplicitTextCollection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /V "HarvestContacts" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Input\TIPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Input\TIPC" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Personalization\Settings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Personalization\Settings" /V "AcceptedPrivacyPolicy" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /V "HasAccepted" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /V "TailoredExperiencesWithDiagnosticDataEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /V "NoGenTicket" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+SETX POWERSHELL_TELEMETRY_OPTOUT 1 >nul 2>&1
 SchTasks /Change /Disable /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" >nul 2>&1
 SchTasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" >nul 2>&1
 SchTasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" >nul 2>&1
@@ -672,7 +610,6 @@ SchTasks /Change /Disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windo
 SchTasks /Change /Disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" >nul 2>&1
 SchTasks /Change /Disable /TN "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" >nul 2>&1
 SchTasks /Change /Disable /TN "\Microsoft\Windows\Windows Error Reporting\QueueReporting" >nul 2>&1
-SETX POWERSHELL_TELEMETRY_OPTOUT 1 >nul 2>&1
 
 ECHO Done.
 
@@ -720,14 +657,14 @@ RD "%ProgramData%\Microsoft OneDrive" /Q /S >nul 2>&1
 :::::::::::::::::::::::::::::::::::
 ECHO Removing Related Registry Keys
 :::::::::::::::::::::::::::::::::::
-REG Query "HKCR\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCR\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /F) >nul 2>&1
-REG Query "HKCR\Wow6432Node\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCR\Wow6432Node\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /F) >nul 2>&1
+REG Query "HKCR\CLSID" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCR\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /F) >nul 2>&1
+REG Query "HKCR\Wow6432Node\CLSID" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCR\Wow6432Node\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /F) >nul 2>&1
 
 :::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO Removing OneDrive from Explorer/Quick Access
 :::::::::::::::::::::::::::::::::::::::::::::::::
-REG Query "HKCR\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCR\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCR\Wow6432Node\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCR\Wow6432Node\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCR\CLSID" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCR\CLSID\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCR\Wow6432Node" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCR\Wow6432Node\{018D5C66-4533-4308-9B53-224DE2ED1FE6}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ::::::::::::::::::::::
 ECHO Disabling OneSync
@@ -737,6 +674,7 @@ REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" >nul 2>&1 && if %E
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /V "DisableMeteredNetworkFileSync" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /V "DisableLibrariesDefaultSaveToOneDrive" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\OneDrive" /V "DisablePersonalSync" /T "REG_DWORD" /D "2" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\OneDrive" /V "PreventNetworkTrafficPreUserSignIn" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ECHO.
 ECHO Done.
@@ -748,9 +686,9 @@ ECHO ::::: Disabling Location Services  :::::
 ECHO ::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableWindowsLocationProvider" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocation" /D "1" /T "REG_DWORD" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableWindowsLocationProvider" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -772,8 +710,8 @@ ECHO ::::: Disabling Bing in Start Menu :::::
 ECHO ::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /V "ShowRunAsDifferentUserInStart" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /V "DisableSearchBoxSuggestions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /V "ShowRunAsDifferentUserInStart" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -813,9 +751,6 @@ REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" >nul 2>&1 &&
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /V "DisableremovableDriveIndexing" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /V "PreventUsingAdvancedIndexingOptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\services\TermServicentVersion\Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\services\TermServicentVersion\Search" /V "AllowCortana" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /V "BingSearchEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /V "CortanaEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /V "ConnectedSearchUseWebOverMeteredConnections" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -840,19 +775,12 @@ ECHO ::::: Disabling Sponsored Apps :::::
 ECHO ::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableCloudOptimizedContent" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableConsumerAccountStateContent" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableWindowsConsumerFeatures" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "FeatureManagementEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -862,8 +790,12 @@ REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353696Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableCloudOptimizedContent" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableConsumerAccountStateContent" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableWindowsConsumerFeatures" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -874,7 +806,7 @@ ECHO ::::: Deleting App Compatibility Appraiser and Assistant :::::
 ECHO ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /V "DisablePCA" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 
 ECHO Done.
@@ -886,12 +818,12 @@ ECHO ::::: Deleting Customer Experiment Improvement Program :::::
 ECHO ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" /V "CEIPEnable" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Messenger\Client" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Messenger\Client" /V "CEIP" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\SQMClient" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\SQMClient" /V "CorporateSQMURL" /T "REG_SZ" /D "0.0.0.0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" /V "CEIPEnable" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -902,7 +834,7 @@ ECHO ::::: Deleting Program Data Updater :::::
 ECHO :::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -913,9 +845,9 @@ ECHO ::::: Deleting Autocheck Proxy :::::
 ECHO ::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -988,8 +920,6 @@ ECHO.
 REG Query "HKLM\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /V "HarvestContacts" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" /V "AllowInputPersonalization" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" /V "PreventHandwritingDataSharing" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" /V "PreventHandwritingErrorReports" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" /V "PreventHandwritingDataSharing" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 
@@ -1002,7 +932,7 @@ ECHO ::::: Disabling App Launch Tracking :::::
 ECHO :::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "Start_TrackProgs" /D "0" /T "REG_DWORD" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "Start_TrackProgs" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -1013,6 +943,9 @@ ECHO ::::: Disabling Diagnostics and Privacy :::::
 ECHO :::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
+REG Query "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" /V "EnabledV9" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Privacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Privacy" /V "EnableEncryptedMediaExtensions" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Input\TIPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Input\TIPC" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /V "DiagnosticErrorText" /T "REG_SZ" /D "" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /V "DiagnosticLinkText" /T "REG_SZ" /D "" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" /V "DiagnosticErrorText" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -1020,9 +953,6 @@ REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" >nul 
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /V "DisableInventory" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /V "DisableUAR" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization" /V "NoLockScreenCamera" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" /V "EnabledV9" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Input\TIPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Input\TIPC" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO Done.
 
@@ -1062,80 +992,116 @@ ECHO.
 :::::::::::::::::::::::::
 ECHO Setting Account Info
 :::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 :::::::::::::::::::
 ECHO Setting Radios
 :::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 ::::::::::::::::::::::::
 ECHO Setting Diagnostics
 ::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2297E4E2-5DBE-466D-A12B-0F8286F0D9CA}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2297E4E2-5DBE-466D-A12B-0F8286F0D9CA}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2297E4E2-5DBE-466D-A12B-0F8286F0D9CA}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 :::::::::::::::::::::
 ECHO Setting Contacts
 :::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 :::::::::::::::::::::
 ECHO Setting Calendar
 :::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 :::::::::::::::::::::::::
 ECHO Setting Call History
 :::::::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 ::::::::::::::::::
 ECHO Setting Email
 ::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 ::::::::::::::::::
 ECHO Setting Tasks
 ::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953072741}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953072741}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953072741}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+::::::::::::::::
+ECHO Setting SMS
+::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{21157C1F-2651-4CC1-90CA-1F28B02263F6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::
+ECHO Setting Contacts
+:::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::
+ECHO Setting Sms Send
+:::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::
+ECHO Setting Activity
+:::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9D9E0118-1807-4F2E-96E4-2CE57142E196}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{B19F89AF-E3EB-444B-8DEA-202575A71599}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 
 :::::::::::::::::::::
 ECHO Setting Location
 :::::::::::::::::::::
-REG Query "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Privacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Privacy" /V "EnableEncryptedMediaExtensions" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\OneDrive" /V "PreventNetworkTrafficPreUserSignIn" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::::::::::::::::::
+ECHO Setting User Account Information
+:::::::::::::::::::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::::::
+ECHO Setting Appointments
+:::::::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::::::::::
+ECHO Setting Location History
+:::::::::::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E6AD100E-5F4E-44CD-BE0F-2265D88D14F5}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+::::::::::::::::::::
+ECHO Setting Sensors
+::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E83AF229-8640-4D18-A213-E22675EBB2C3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::::::::::::
+ECHO Setting Phone Call History
+:::::::::::::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::::
+ECHO Setting Phone Call
+:::::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{235B668D-B2AC-4864-B49C-ED1084F6C9D3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+:::::::::::::::::::::::::::::::::::::::
+ECHO Setting User Notification Listener
+:::::::::::::::::::::::::::::::::::::::
+REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+
+
+::::::::::::::::::::::::::::::::
+ECHO Setting Other Registry Keys
+::::::::::::::::::::::::::::::::
 REG Query "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Browser" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Browser" /V "AllowAddressBarDropdown" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Experience" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Experience" /V "AllowCortana" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Experience" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Experience" /V "AllowTailoredExperiencesWithDiagnosticData" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences" /V "ModelDownloadAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /V "GlobalUserDisabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /V "MaxTelemetryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" /V "SyncPolicy" /T "REG_DWORD" /D "5" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\AppSync" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\AppSync" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\BrowserSettings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\BrowserSettings" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Credentials" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Credentials" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Personalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Personalization" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\StartLayout" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\StartLayout" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Windows" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Windows" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /V "EnabledExecution" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /V "DontReportInfectionInformation" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\Speech" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Speech" /V "AllowSpeechModelUpdate" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKLM\SOFTWARE\Policies\Microsoft\WMDRM" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\WMDRM" /V "DisableOnline" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SpyNetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V "DoNotShowFeedbackNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /V "EnableVirtualizationBasedSecurity" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /V "HVCIMATRequired" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /V "DisableSettingSync" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /V "DisableSettingSyncUserOverride" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKLM\System\CurrentControlSet\Control\WMI\Autologger\DefenderApiLogger" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\WMI\Autologger\DefenderApiLogger" /V "Start" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKLM\System\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\System\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger" /V "Start" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 
 ECHO.
 ECHO Done.
@@ -2341,7 +2307,7 @@ ECHO ::::: Setting Registry Keys for Current User :::::
 ECHO ::::::::::::::::::::::::::::::::::::::::::::::::::
 ECHO.
 
-REG Query "HKCU\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Classes\CLSID" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" /V "System.IsPinnedToNameSpaceTree" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" /V "EnabledV9" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Privacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\Microsoft.Microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Privacy" /V "EnableEncryptedMediaExtensions" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Edge\SmartScreenEnabled" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Edge\SmartScreenEnabled" /VE /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -2349,12 +2315,17 @@ REG Query "HKCU\SOFTWARE\Microsoft\Edge\SmartScreenPuaEnabled" >nul 2>&1 && if %
 REG Query "HKCU\SOFTWARE\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /V "RestrictImplicitTextCollection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /V "HarvestContacts" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /V "HarvestContacts" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /V "HarvestContacts" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Input\TIPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Input\TIPC" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Input\TIPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Input\TIPC" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\MediaPlayer\Preferences" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\MediaPlayer\Preferences" /V "UsageTracking" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\OneDrive" /V "DisablePersonalSync" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\OneDrive" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\OneDrive" /V "PreventNetworkTrafficPreUserSignIn" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\PCHealth\ErrorReporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\PCHealth\ErrorReporting" /V "DoReport" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\PCHealth\ErrorReporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\PCHealth\ErrorReporting" /V "ShowUI" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Personalization\Settings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /V "AcceptedPrivacyPolicy" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Personalization\Settings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /V "AcceptedPrivacyPolicy" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Personalization\Settings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /V "AcceptedPrivacyPolicy" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\PolicyManager\current\device\Browser" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\PolicyManager\current\device\Browser" /V "AllowAddressBarDropdown" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\PolicyManager\current\device\Education" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\PolicyManager\current\device\Education" /V "IsEducationEnvironment" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -2367,28 +2338,21 @@ REG Query "HKCU\SOFTWARE\Microsoft\PolicyManager\default\System\AllowExperimenta
 REG Query "HKCU\SOFTWARE\Microsoft\Siuf\Rules" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /V "NumberOfSIUFInPeriod" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Preferences" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Preferences" /V "ModelDownloadAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /V "HasAccepted" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /V "HasAccepted" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender Security Center\Notifications" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender Security Center\Notifications" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender" /V "ManagedDefenderProductType" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender" /V "OneTimeSqmDataSent" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender" /V "ProductStatus" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender\Features" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Features" /V "TamperProtection" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableAntiSpywareRealtimeProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" /V "DpaDisabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender\Scan" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\Scan" /V "AutomaticallyCleanAfterScan" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows Defender\UX Configuration" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows Defender\UX Configuration" /V "DisablePrivacyMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug" /V "Auto" /T "REG_SZ" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "NetworkThrottlingIndex" /T "REG_DWORD" /D "4294967295" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /V "SystemResponsiveness" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /V "SensorPermissionState" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0600DD45-FAF2-4131-A006-0B17509B9F78}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{0671EB05-7D95-4153-A32B-1426B9FE61DB}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{4738DE7A-BCC1-4E2D-B1B0-CADB044BFA81}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{6FAC31FA-4A85-4E64-BFD5-2154FF4594B3}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{87BF85F4-2CE1-4160-96EA-52F554AA28A2}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{8A9C643C-3D74-4099-B6BD-9C6D170898B1}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{E3176A65-4E44-4ED3-AA73-3283660ACB9C}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{FC931F16-B50A-472E-B061-B6F79A71EF59}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /V "SensorPermissionState" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" /V "RPSessionInterval" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter" /V "ActivationType" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" /V "DiagnosticErrorText" /T "REG_SZ" /D "" /F) >nul 2>&1
@@ -2397,54 +2361,70 @@ REG Query "HKCU\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" >nul 2>&1 && i
 REG Query "HKCU\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\DevHomeUpdate" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OutlookUpdate" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /V "EnableWebContentEvaluation" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /V "GlobalUserDisabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "FeaturemanagementEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338393Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353694Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353696Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "ContentDeliveryAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "FeatureManagementEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "FeaturemanagementEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "NumberOfSIUFInPeriod" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "OemPreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "PreInstalledAppsEverEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SilentInstalledAppsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SoftLandingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-310093Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338387Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338388Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338389Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338393Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-338393Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353694Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353694Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353696Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353696Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContent-353698Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SubscribedContentEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /V "SystemPaneSuggestionsEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\SuggestedApps" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /V "DODownloadMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2297E4E2-5DBE-466D-A12B-0F8286F0D9CA}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2297E4E2-5DBE-466D-A12B-0F8286F0D9CA}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953072741}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953072741}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{21157C1F-2651-4CC1-90CA-1F28B02263F6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2297E4E2-5DBE-466D-A12B-0F8286F0D9CA}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{235B668D-B2AC-4864-B49C-ED1084F6C9D3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9D9E0118-1807-4F2E-96E4-2CE57142E196}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{B19F89AF-E3EB-444B-8DEA-202575A71599}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953072741}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E6AD100E-5F4E-44CD-BE0F-2265D88D14F5}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E83AF229-8640-4D18-A213-E22675EBB2C3}" /V "Value" /T "REG_SZ" /D "Deny" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /V "SearchOrderConfig" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V "HubMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V "ShowCloudFilesInQuickAccess" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -2454,12 +2434,13 @@ REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 &&
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "Hidden" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "HideFileExt" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "LaunchTo" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "Start_TrackProgs" /D "0" /T "REG_DWORD" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "Start_TrackProgs" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "TaskbarMn" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "TaskbarMn" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" /V "PeopleBand" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" /V "ShowHibernateOption" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /V "EnthusiastMode" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /V "SecurityHealth" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance" /V "Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -2514,41 +2495,17 @@ REG Query "HKCU\SOFTWARE\Policies\Microsoft\Edge" >nul 2>&1 && if %ERRORLEVEL% E
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\EdgeUpdate" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\EdgeUpdate" /V "CreateDesktopShortcutDefault" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" /V "AllowInputPersonalization" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "2" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" /V "RestrictImplicitInkCollection" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\InputPersonalization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\TabletPC" /V "AllowInputPersonalization" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\MRT" /V "DontOfferThroughWUAU" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\MRT" /V "DontReportInfectionInformation" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\MRT" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\MRT" /V "DontReportInfectionInformation" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Messenger\Client" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Messenger\Client" /V "CEIP" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\PushToInstall" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\PushToInstall" /V "DisablePushToInstall" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\SQMClient" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\SQMClient" /V "CorporateSQMURL" /T "REG_SZ" /D "0.0.0.0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\SQMClient\Windows" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\SQMClient\Windows" /V "CEIPEnable" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Speech" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Speech" /V "AllowSpeechModelUpdate" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\WMDRM" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\WMDRM" /V "DisableOnline" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /V "DisableEnhancedNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" /V "AllowFastServiceStartup" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableAntiVirus" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" /V "DisableSpecialRunningModes" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" /V "ServiceKeepAlive" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender" /V "VerifiedAndReputablePolicyState" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine" /V "MpEnablePus" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableBehaviorMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableIOAVProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableOnAccessProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRoutinelyTakingAction" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableScanOnRealtimeEnable" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /V "DisableEnhancedNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" /V "DisableGenericReports" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" /V "DisableBlockAtFirstSeen" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" /V "SpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\SpyNet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "LocalSettingOverrideSpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SpyNetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /V "NoGenTicket" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /V "DisabledByGroupPolicy" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\AppCompat" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /V "DisableInventory" /T "REG_DWORD" /D "1" /F) >nul 2>&1
@@ -2560,12 +2517,12 @@ REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && i
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /V "DisableWindowsConsumerFeatures" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V "AllowTelemetry" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V "DoNotShowFeedbackNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 ("HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /V "EnableVirtualizationBasedSecurity" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /V "HVCIMATRequired" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /V "DoNotShowFeedbackNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /V "DODownloadMode" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /V "DisableSearchBoxSuggestions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /V "ShowRunAsDifferentUserInStart" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\GameDVR" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /V "AllowGameDVR" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" /V "PreventHandwritingErrorReports" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" /V "PreventHandwritingErrorReports" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocation" /D "1" /T "REG_DWORD" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "1" /F) >nul 2>&1
@@ -2597,7 +2554,6 @@ REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\SettingSync" >nul 2>&1 && if
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\SettingSync" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /V "DisableWindowsSettingSync" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\SettingSync" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /V "DisableWindowsSettingSyncUserOverride" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" /V "EnableActivityFeed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" /V "EnableSmartScreen" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" /V "PublishUserActivities" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\System" /V "UploadUserActivities" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Windows\TabletPC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" /V "PreventHandwritingDataSharing" /T "REG_DWORD" /D "2" /F) >nul 2>&1
@@ -2648,11 +2604,10 @@ REG Query "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\osm\preventedsolutiontyp
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\outlook\security" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\outlook\security" /V "level" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\powerpoint\security" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\powerpoint\security" /V "blockcontentexecutionfrominternet" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\word\security" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\office\16.0\word\security" /V "blockcontentexecutionfrominternet" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" /V "SmartScreenEnabled" /T "REG_SZ" /D "Off" /F) >nul 2>&1
-REG Query "HKCU\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
+REG Query "HKCU\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Delete "HKCU\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Control\BitLocker" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\BitLocker" /V "PreventDeviceEncryption" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Control\CrashControl" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\CrashControl" /V "CrashDumpEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Control\FileSystem" /V "LongPathsEnabled" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\FileSystem" /V "LongPathsEnabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\SYSTEM\CurrentControlSet\Control\FileSystem" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\FileSystem" /V "LongPathsEnabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Control\FileSystem" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\FileSystem" /V "NtfsDisableLastAccessUpdate" /T "REG_DWORD" /D "80000001" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Control\Session Manager" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\Session Manager" /V "DisableWpbtExecution" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /V "ClearPageFileAtShutdown" /T "REG_DWORD" /D "0" /F) >nul 2>&1
@@ -2684,7 +2639,6 @@ REG Query "HKCU\SYSTEM\CurrentControlSet\Services\AxInstSV" >nul 2>&1 && if %ERR
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\AxInstSVـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\AxInstSVـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\BDESVC" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\BDESVC" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\BDESVCـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\BDESVCـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\BFE" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\BFE" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\BITS" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\BITS" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\BITSـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\BITSـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\BTAGService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\BTAGService" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
@@ -2900,10 +2854,8 @@ REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SNMPTRAP" >nul 2>&1 && if %ERR
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SNMPTRAPـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SNMPTRAPـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SSDPSRV" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SSDPSRV" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SSDPSRVـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SSDPSRVـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SamSs" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SamSs" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\ScDeviceEnum" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\ScDeviceEnum" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\ScDeviceEnumـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\ScDeviceEnumـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SecurityHealthService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SecurityHealthService" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SecurityHealthService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SecurityHealthService" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SecurityHealthService_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SecurityHealthService_*" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\Sense" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\Sense" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
@@ -2916,17 +2868,7 @@ REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SensrSvc" >nul 2>&1 && if %ERR
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SensrSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SensrSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SessionEnv" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SessionEnv" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SessionEnvـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SessionEnvـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SgrmBroker" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SgrmBroker" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /V "DoNotAllowExceptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /V "EnableFirewall" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /V "DoNotAllowExceptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /V "EnableFirewall" /T "REG_DWORD" /D "0" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /V "DisableNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /V "DoNotAllowExceptions" /T "REG_DWORD" /D "1" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /V "EnableFirewall" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccessـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedAccessـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedRealitySvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedRealitySvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\SharedRealitySvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\SharedRealitySvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
@@ -3087,7 +3029,6 @@ REG Query "HKCU\SYSTEM\CurrentControlSet\Services\lltdsvc" >nul 2>&1 && if %ERRO
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\lltdsvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\lltdsvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\lmhosts" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\lmhosts" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\lmhostsـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\lmhostsـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\mpssvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\mpssvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\mpssvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\mpssvc" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\mpssvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\mpssvc_*" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\msiserver" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\msiserver" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
@@ -3168,7 +3109,6 @@ REG Query "HKCU\SYSTEM\CurrentControlSet\Services\wmiApSrv" >nul 2>&1 && if %ERR
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\wmiApSrvـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\wmiApSrvـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\workfolderssvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\workfolderssvc" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\workfolderssvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\workfolderssvc_*" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKCU\SYSTEM\CurrentControlSet\Services\wscsvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\wscsvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\wscsvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\wscsvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\wscsvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\wscsvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKCU\SYSTEM\CurrentControlSet\Services\wsearch" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SYSTEM\CurrentControlSet\Services\wsearch" /V "start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
@@ -3184,6 +3124,22 @@ REG Query "HKCU\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotRe
 REG Query "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /V "GlobalUserDisabled" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /V "HideSCAMeetNow" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /V "ScoobeSystemSettingEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender" /V "AllowFastServiceStartup" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender" /V "DisableAntiVirus" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender" /V "DisableSpecialRunningModes" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender" /V "ServiceKeepAlive" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\MpEngine" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\MpEngine" /V "MpEnablePus" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableBehaviorMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableIOAVProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableOnAccessProtection" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRealtimeMonitoring" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableRoutinelyTakingAction" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /V "DisableScanOnRealtimeEnable" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\Reporting" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\Reporting" /V "DisableEnhancedNotifications" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\SpyNet" /V "DisableBlockAtFirstSeen" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\SpyNet" /V "SpynetReporting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\Software\Policies\Microsoft\Windows Defender\SpyNet" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows Defender\SpyNet" /V "SubmitSamplesConsent" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot" /V "TurnOffWindowsCopilot" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Control\CI\Policy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Control\CI\Policy" /V "DisableAntiSpyware" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Control\CI\Policy" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Control\CI\Policy" /V "DisableAntiVirus" /T "REG_DWORD" /D "1" /F) >nul 2>&1
@@ -3193,7 +3149,6 @@ REG Query "HKCU\System\CurrentControlSet\Control\WMI\Autologger\DefenderApiLogge
 REG Query "HKCU\System\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger" /V "Start" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Services\MDCoreSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\MDCoreSvc" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Services\SecurityHealthService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\SecurityHealthService" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
-REG Query "HKCU\System\CurrentControlSet\Services\Sense" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\Sense" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Services\SgrmBroker" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\SgrmBroker" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Services\WdBoot" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\WdBoot" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\System\CurrentControlSet\Services\WdFilter" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\WdFilter" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
@@ -3202,6 +3157,9 @@ REG Query "HKCU\System\CurrentControlSet\Services\WdNisSvc" >nul 2>&1 && if %ERR
 REG Query "HKCU\System\CurrentControlSet\Services\WinDefend" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\CurrentControlSet\Services\WinDefend" /V "Start" /T "REG_DWORD" /D "4" /F) >nul 2>&1
 REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_DXGIHonorFSEWindowsCompatible" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_EFSEFeatureFlags" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_EFSEFeatureFlags" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_Enabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_FSEBehavior" /T "REG_DWORD" /D "2" /F) >nul 2>&1
 REG Query "HKCU\System\GameConfigStore" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\System\GameConfigStore" /V "GameDVR_FSEBehaviorMode" /T "REG_DWORD" /D "2" /F) >nul 2>&1
