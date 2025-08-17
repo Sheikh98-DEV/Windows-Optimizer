@@ -1365,6 +1365,23 @@ ECHO Done.
 
 
 ECHO.
+ECHO :::::::::::::::::::::::::::::::::::::::
+ECHO ::::: Unlocking location Services :::::
+ECHO :::::::::::::::::::::::::::::::::::::::
+ECHO.
+
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocation" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableWindowsLocationProvider" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocation" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableWindowsLocationProvider" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Search" /V "AllowSearchToUseLocation" /T "REG_DWORD" /D "1" /F) >nul 2>&1
+
+ECHO Done.
+
+
+ECHO.
 ECHO ::::::::::::::::::::::::::::
 ECHO ::::: Setting Services :::::
 ECHO ::::::::::::::::::::::::::::
@@ -4037,6 +4054,23 @@ REG Query "HKCU\SOFTWARE\Policies\Microsoft\Edge" >nul 2>&1 && if %ERRORLEVEL% E
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Edge" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Edge" /V "WalletDonationEnabled" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\Edge" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\Edge" /V "WebWidgetAllowed" /T "REG_DWORD" /D "0" /F) >nul 2>&1
 REG Query "HKCU\SOFTWARE\Policies\Microsoft\EdgeUpdate" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKCU\SOFTWARE\Policies\Microsoft\EdgeUpdate" /V "CreateDesktopShortcutDefault" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+
+ECHO Done.
+
+
+ECHO.
+ECHO :::::::::::::::::::::::::::::::::::::::
+ECHO ::::: Unlocking location Services :::::
+ECHO :::::::::::::::::::::::::::::::::::::::
+ECHO.
+
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocation" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableWindowsLocationProvider" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocation" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableLocationScripting" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors" /V "DisableWindowsLocationProvider" /T "REG_DWORD" /D "0" /F) >nul 2>&1
+REG Query "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Search" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Search" /V "AllowSearchToUseLocation" /T "REG_DWORD" /D "1" /F) >nul 2>&1
 
 ECHO Done.
 
