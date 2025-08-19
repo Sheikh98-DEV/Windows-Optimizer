@@ -1,7 +1,7 @@
 @ECHO OFF
 SETLOCAL EnableDelayedExpansion
-SET Version=1.1.0
-Set ReleaseTime=Aug 17, 2025
+SET Version=1.2.0
+Set ReleaseTime=Aug 19, 2025
 Title Windows Optimizer Script - by S.H.E.I.K.H (V. %version%)
 CD /D "%~dp0"
 CLS
@@ -1837,8 +1837,6 @@ SC Query "WinHttpAutoProxySvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "Wi
 SC Query "WinHttpAutoProxySvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WinHttpAutoProxySvc_*" Start=Demand) >nul 2>&1
 SC Query "WinRM" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WinRM" Start=Demand) >nul 2>&1
 SC Query "WinRM_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WinRM_*" Start=Demand) >nul 2>&1
-SC Query "WlanSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WlanSvc" Start=Demand) >nul 2>&1
-SC Query "WlanSvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WlanSvc_*" Start=Demand) >nul 2>&1
 SC Query "WpcMonSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WpcMonSvc" Start=Demand) >nul 2>&1
 SC Query "WpcMonSvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WpcMonSvc_*" Start=Demand) >nul 2>&1
 SC Query "WpnService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WpnService" Start=Demand) >nul 2>&1
@@ -2120,7 +2118,6 @@ REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WebClient" >nul 2>&1 && if %ER
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WiaRpc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WinRM" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinRM" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpnService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpnService" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
@@ -2338,7 +2335,6 @@ REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WebClientـ*" >nul 2>&1 && if 
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WiaRpcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WinRMـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinRMـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpnServiceـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpnServiceـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
@@ -4532,8 +4528,6 @@ SC Query "WinHttpAutoProxySvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "Wi
 SC Query "WinHttpAutoProxySvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WinHttpAutoProxySvc_*" Start=Demand) >nul 2>&1
 SC Query "WinRM" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WinRM" Start=Demand) >nul 2>&1
 SC Query "WinRM_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WinRM_*" Start=Demand) >nul 2>&1
-SC Query "WlanSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WlanSvc" Start=Demand) >nul 2>&1
-SC Query "WlanSvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WlanSvc_*" Start=Demand) >nul 2>&1
 SC Query "WpcMonSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WpcMonSvc" Start=Demand) >nul 2>&1
 SC Query "WpcMonSvc_*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WpcMonSvc_*" Start=Demand) >nul 2>&1
 SC Query "WpnService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (SC Config "WpnService" Start=Demand) >nul 2>&1
@@ -4815,7 +4809,6 @@ REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WebClient" >nul 2>&1 && if %ER
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WiaRpc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WinRM" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinRM" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpnService" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpnService" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvc" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvc" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
@@ -5033,7 +5026,6 @@ REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WebClientـ*" >nul 2>&1 && if 
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\Wecsvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WiaRpcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WinRMـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WinRMـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
-REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WlanSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpcMonSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WpnServiceـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WpnServiceـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
 REG Query "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvcـ*" >nul 2>&1 && if %ERRORLEVEL% EQU 0 (REG Add "HKLM\SYSTEM\CurrentControlSet\Services\WwanSvcـ*" /V "start" /T "REG_DWORD" /D "3" /F) >nul 2>&1
